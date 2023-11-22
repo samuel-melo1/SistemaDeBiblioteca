@@ -5,27 +5,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.util.List;
 
-@Entity
 @Data
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pessoa {
+public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id_pessoa;
+    private Integer id_categoria;
 
     private String nome;
-    private String cpf;
-    private String endereco;
-    private LocalDate data_nascimento;
-    @OneToMany(mappedBy = "pessoa")
-    @JoinColumn(name="emprestimo_id")
-    private List<Emprestimo> emprestimo;
-
-
+    private String descricao;
+    @OneToMany(mappedBy = "categoria")
+    @JoinColumn(name="livro_id")
+    private List<Livro> livro;
 
 }
