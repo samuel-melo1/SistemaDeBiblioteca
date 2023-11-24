@@ -21,6 +21,7 @@ public class Emprestimo {
     private LocalDate prazo;
     @ManyToOne
     private Pessoa pessoa;
+
     @ManyToOne
     private Livro livro;
 

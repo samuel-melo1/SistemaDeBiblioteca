@@ -18,9 +18,10 @@ public class Livro {
     private Integer id_livro;
 
     private String titulo;
+
     @OneToMany(mappedBy = "livro")
-    @JoinColumn(name="emprestimo_id")
     private List<Emprestimo> emprestimo;
+
     @ManyToOne
     private Categoria categoria;
 }

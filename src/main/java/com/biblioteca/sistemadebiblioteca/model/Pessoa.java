@@ -22,8 +22,10 @@ public class Pessoa {
     private String cpf;
     private String endereco;
     private LocalDate data_nascimento;
+    private String email;
+    private String senha;
+
     @OneToMany(mappedBy = "pessoa")
-    @JoinColumn(name="emprestimo_id")
     private List<Emprestimo> emprestimo;
 
 

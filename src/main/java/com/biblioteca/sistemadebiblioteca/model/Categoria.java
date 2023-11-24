@@ -19,8 +19,8 @@ public class Categoria {
 
     private String nome;
     private String descricao;
+
     @OneToMany(mappedBy = "categoria")
-    @JoinColumn(name="livro_id")
     private List<Livro> livro;
 
 }
