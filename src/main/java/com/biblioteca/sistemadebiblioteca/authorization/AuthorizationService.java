@@ -1,15 +1,17 @@
-package com.biblioteca.sistemadebiblioteca.configuration.authentication;
+package com.biblioteca.sistemadebiblioteca.authorization;
 
 import com.biblioteca.sistemadebiblioteca.repository.PessoaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AuthorizationService implements UserDetailsService {
 
     private PessoaRepository pessoaRepository;
 
-    AuthorizationService(PessoaRepository pessoaRepository){
+    public AuthorizationService(PessoaRepository pessoaRepository){
         this.pessoaRepository = pessoaRepository;
     }
     @Override
