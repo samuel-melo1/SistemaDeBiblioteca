@@ -1,10 +1,14 @@
 package com.biblioteca.sistemadebiblioteca.service;
 
+
+import com.biblioteca.sistemadebiblioteca.dto.PessoaDTO;
 import com.biblioteca.sistemadebiblioteca.exceptions.EmailExistsException;
 import com.biblioteca.sistemadebiblioteca.model.Pessoa;
 import com.biblioteca.sistemadebiblioteca.repository.PessoaRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class PessoaService {
@@ -17,12 +21,22 @@ public class PessoaService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public Pessoa register(Pessoa pessoa) throws EmailExistsException {
-        if(pessoaRepository.existsPessoaByEmail(pessoa.getEmail())){
+    public Pessoa register(PessoaDTO pessoaDTO) throws EmailExistsException {
+        if(pessoaRepository.existsPessoaByEmail(pessoaDTO.email())){
             throw new EmailExistsException("Email já cadastrado!");
         }
-        pessoa.setSenha(passwordEncoder.encode(pessoa.getSenha()));
-        return pessoaRepository.save(pessoa);
+        String encryptedPassword = new BCryptPasswordEncoder().encode(pessoaDTO.senha());
+
+        Pessoa newUser = new Pessoa(pessoaDTO.nome(),
+                pessoaDTO.cpf(),
+                pessoaDTO.data_nascimento(),
+                pessoaDTO.endereco(),
+                pessoaDTO.email(),
+                encryptedPassword,
+                pessoaDTO.role(),
+                pessoaDTO.emprestimo());
+
+        return pessoaRepository.save(newUser);
     }
 
 

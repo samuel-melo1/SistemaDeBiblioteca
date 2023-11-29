@@ -2,9 +2,7 @@ package com.biblioteca.sistemadebiblioteca.model;
 
 import com.biblioteca.sistemadebiblioteca.Enums.PessoaRole;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -31,8 +29,20 @@ public class Pessoa implements UserDetails {
     private String senha;
     private PessoaRole role;
 
+
     @OneToMany(mappedBy = "pessoa")
     private List<Emprestimo> emprestimo;
+
+    public Pessoa(String nome,String cpf,LocalDate data_nascimento, String endereco, String email,  String senha,PessoaRole role, List<Emprestimo> emprestimo){
+        this.role = role;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.data_nascimento = data_nascimento;
+        this.endereco = endereco;
+        this.senha = senha;
+        this.emprestimo = emprestimo;
+        this.email = email;
+    }
 
 
     @Override
