@@ -12,15 +12,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PessoaService {
-
     private PessoaRepository pessoaRepository;
     private PasswordEncoder passwordEncoder;
-
     public PessoaService(PessoaRepository pessoaRepository, PasswordEncoder passwordEncoder){
         this.pessoaRepository = pessoaRepository;
         this.passwordEncoder = passwordEncoder;
     }
-
     public Pessoa register(PessoaDTO pessoaDTO) throws EmailExistsException {
         if(pessoaRepository.existsPessoaByEmail(pessoaDTO.email())){
             throw new EmailExistsException("Email já cadastrado!");

@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadebiblioteca.authorization;
+package com.biblioteca.sistemadebiblioteca.security.configuration.authorization;
 
 import com.biblioteca.sistemadebiblioteca.repository.PessoaRepository;
 import org.springframework.security.core.userdetails.UserDetails;

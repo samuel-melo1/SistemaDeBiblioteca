@@ -1,6 +1,9 @@
 package com.biblioteca.sistemadebiblioteca.controller;
 
 import com.biblioteca.sistemadebiblioteca.dto.AuthenticationDTO;
+import com.biblioteca.sistemadebiblioteca.dto.LoginResponseDTO;
+import com.biblioteca.sistemadebiblioteca.model.Pessoa;
+import com.biblioteca.sistemadebiblioteca.security.configuration.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +21,9 @@ public class AuthenticationController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private TokenService tokenService;
+
     public AuthenticationController(AuthenticationManager authenticationManager){
         this.authenticationManager = authenticationManager;
     }
@@ -27,7 +33,8 @@ public class AuthenticationController {
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.email(), data.senha());
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
-        return ResponseEntity.ok().build();
+        var token = tokenService.generateToken((Pessoa) auth.getPrincipal());
+        return ResponseEntity.ok(new LoginResponseDTO(token));
 
     }
 
