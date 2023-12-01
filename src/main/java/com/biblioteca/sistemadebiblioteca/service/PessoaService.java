@@ -8,6 +8,8 @@ import com.biblioteca.sistemadebiblioteca.repository.PessoaRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import java.util.List;
+
 
 
 @Service
@@ -34,6 +36,10 @@ public class PessoaService {
                 pessoaDTO.emprestimo());
 
         return pessoaRepository.save(newUser);
+    }
+
+    public List<Pessoa> getAll(){
+        return pessoaRepository.findAll();
     }
 
 
