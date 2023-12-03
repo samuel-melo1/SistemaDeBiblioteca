@@ -39,5 +39,12 @@ public class PessoaService {
         return pessoaRepository.findAll();
     }
 
+    public boolean deletePessoa(int id_pessoa){
+        int pessoa_id = pessoaRepository.findById(id_pessoa);
+        if(pessoa_id == null){return false;}
+        pessoaRepository.deleteById(id_pessoa);
+        return true;
+    }
+
 
 }
