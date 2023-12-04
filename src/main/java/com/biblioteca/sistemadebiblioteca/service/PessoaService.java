@@ -4,6 +4,7 @@ import com.biblioteca.sistemadebiblioteca.dto.PessoaDTO;
 import com.biblioteca.sistemadebiblioteca.exceptions.EmailExistsException;
 import com.biblioteca.sistemadebiblioteca.model.Pessoa;
 import com.biblioteca.sistemadebiblioteca.repository.PessoaRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -39,9 +40,12 @@ public class PessoaService {
         return pessoaRepository.findAll();
     }
 
+    @Transactional
     public boolean deletePessoa(int id_pessoa){
-        int pessoa_id = pessoaRepository.findById(id_pessoa);
-        if(pessoa_id == null){return false;}
+        Optional<Pessoa> pessoa_id = pessoaRepository.findById(id_pessoa);
+        if(pessoa_id.isEmpty()){
+            return false;
+        }
         pessoaRepository.deleteById(id_pessoa);
         return true;
     }

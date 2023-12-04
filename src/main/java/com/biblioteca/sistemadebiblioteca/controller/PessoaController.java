@@ -38,4 +38,19 @@ public class PessoaController {
 
         }
     }
+
+    @DeleteMapping("/deleteUsers/{id}")
+    public ResponseEntity delete(@PathVariable int id){
+        try{
+            boolean pessoaDeletada = pessoaService.deletePessoa(id);
+            if(pessoaDeletada == false){
+                return new ResponseEntity(HttpStatus.NOT_FOUND);
+            }
+            return ResponseEntity.ok().build();
+        }catch (Exception error){
+           return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+
+    }
+
 }
