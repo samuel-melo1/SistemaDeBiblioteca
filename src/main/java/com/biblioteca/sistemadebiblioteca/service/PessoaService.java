@@ -35,11 +35,9 @@ public class PessoaService {
 
         return pessoaRepository.save(newUser);
     }
-
     public List<Pessoa> getAll(){
         return pessoaRepository.findAll();
     }
-
     @Transactional
     public boolean deletePessoa(int id_pessoa){
         Optional<Pessoa> pessoa_id = pessoaRepository.findById(id_pessoa);
@@ -49,6 +47,5 @@ public class PessoaService {
         pessoaRepository.deleteById(id_pessoa);
         return true;
     }
-
 
 }

@@ -25,7 +25,6 @@ public class PessoaController {
          this.pessoaService.register(pessoaDTO);
          return ResponseEntity.ok().build();
     }
-
     @GetMapping("/listUsers")
     public ResponseEntity<List<Pessoa>> list(){
         try{
@@ -38,7 +37,6 @@ public class PessoaController {
 
         }
     }
-
     @DeleteMapping("/deleteUsers/{id}")
     public ResponseEntity delete(@PathVariable int id){
         try{
@@ -50,7 +48,5 @@ public class PessoaController {
         }catch (Exception error){
            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
-
     }
-
 }

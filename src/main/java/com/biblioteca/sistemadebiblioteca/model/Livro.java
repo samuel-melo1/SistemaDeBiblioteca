@@ -18,10 +18,15 @@ public class Livro {
     private Integer id_livro;
 
     private String titulo;
-
     @OneToMany(mappedBy = "livro")
     private List<Emprestimo> emprestimo;
-
     @ManyToOne
     private Categoria categoria;
+
+    public Livro(String titulo, Categoria categoria){
+        this.titulo = titulo;
+        this.categoria = categoria;
+
+    }
+
 }
