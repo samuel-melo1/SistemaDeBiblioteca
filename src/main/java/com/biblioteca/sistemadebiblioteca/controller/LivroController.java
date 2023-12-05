@@ -6,10 +6,7 @@ import com.biblioteca.sistemadebiblioteca.service.LivroService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/book")
@@ -24,5 +21,18 @@ public class LivroController {
     public ResponseEntity<Livro> createBook(@RequestBody @Valid LivroDTO livroDTO){
         this.service.createBook(livroDTO);
         return new ResponseEntity(livroDTO,HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deleteBook/{id}")
+    public ResponseEntity delete(@PathVariable int id_book){
+        try{
+            boolean bookDeleted = service.deleteBook(id_book);
+            if(bookDeleted == false){
+                return new ResponseEntity(HttpStatus.NOT_FOUND);
+            }
+            return ResponseEntity.ok().build();
+        }catch (Exception error){
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
     }
 }
