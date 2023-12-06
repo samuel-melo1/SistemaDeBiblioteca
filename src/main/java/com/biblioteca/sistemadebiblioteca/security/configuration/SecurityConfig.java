@@ -32,6 +32,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET,"api/listUsers").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "api/deleteUsers/{id}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST,"api/book/createBook").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "api/boot/deleteBook/{id}").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
