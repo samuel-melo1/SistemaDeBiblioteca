@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/book")
 public class LivroController {
@@ -22,6 +24,13 @@ public class LivroController {
         this.service.createBook(livroDTO);
         return new ResponseEntity(livroDTO,HttpStatus.OK);
     }
+
+    @GetMapping("/getBooks")
+    public ResponseEntity<List<Livro>> getAllBooks(){
+       List<Livro> list = service.getAllBooks();
+        return ResponseEntity.ok(list); 
+    }
+
 
     @DeleteMapping("/deleteBook/{id}")
     public ResponseEntity delete(@PathVariable int id_book){
