@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -22,5 +23,11 @@ public class Categoria {
 
     @OneToMany(mappedBy = "categoria")
     private List<Livro> livro;
+
+    public Categoria(String nome, String descricao, List<Livro> livro){
+        this.nome = nome;
+        this.descricao = descricao;
+        this.livro = new ArrayList<>();
+    }
 
 }
