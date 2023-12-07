@@ -1,8 +1,9 @@
-package com.biblioteca.sistemadebiblioteca.controller;
+package com.biblioteca.sistemadebiblioteca.controller.domainController;
 
-import com.biblioteca.sistemadebiblioteca.dto.LivroDTO;
-import com.biblioteca.sistemadebiblioteca.model.Livro;
-import com.biblioteca.sistemadebiblioteca.service.LivroService;
+import com.biblioteca.sistemadebiblioteca.model.dto.CategoriaDTO;
+import com.biblioteca.sistemadebiblioteca.model.dto.LivroDTO;
+import com.biblioteca.sistemadebiblioteca.model.domain.Livro;
+import com.biblioteca.sistemadebiblioteca.model.service.LivroService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,7 @@ public class LivroController {
     }
     @PostMapping("/createBook")
     public ResponseEntity<Livro> createBook(@RequestBody @Valid LivroDTO livroDTO){
+
         this.service.createBook(livroDTO);
         return new ResponseEntity(livroDTO,HttpStatus.OK);
     }
@@ -28,14 +30,12 @@ public class LivroController {
     @GetMapping("/getBooks")
     public ResponseEntity<List<Livro>> getAllBooks(){
        List<Livro> list = service.getAllBooks();
-        return ResponseEntity.ok(list); 
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
-
-
     @DeleteMapping("/deleteBook/{id}")
-    public ResponseEntity delete(@PathVariable int id_book){
+    public ResponseEntity delete(@PathVariable int id){
         try{
-            boolean bookDeleted = service.deleteBook(id_book);
+            boolean bookDeleted = service.deleteBook(id);
             if(bookDeleted == false){
                 return new ResponseEntity(HttpStatus.NOT_FOUND);
             }
