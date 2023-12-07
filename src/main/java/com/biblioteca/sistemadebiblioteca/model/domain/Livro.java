@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadebiblioteca.model;
+package com.biblioteca.sistemadebiblioteca.model.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -20,6 +20,7 @@ public class Livro {
     private String titulo;
     @OneToMany(mappedBy = "livro")
     private List<Emprestimo> emprestimo;
+
     @ManyToOne
     private Categoria categoria;
 

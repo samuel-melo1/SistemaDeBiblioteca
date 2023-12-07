@@ -1,6 +1,6 @@
-package com.biblioteca.sistemadebiblioteca.model;
+package com.biblioteca.sistemadebiblioteca.model.domain;
 
-import com.biblioteca.sistemadebiblioteca.Enums.PessoaRole;
+import com.biblioteca.sistemadebiblioteca.model.Enums.PessoaRole;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;

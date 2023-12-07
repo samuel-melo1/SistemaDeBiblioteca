@@ -1,9 +1,9 @@
-package com.biblioteca.sistemadebiblioteca.service;
+package com.biblioteca.sistemadebiblioteca.model.service;
 
-import com.biblioteca.sistemadebiblioteca.dto.CategoriaDTO;
-import com.biblioteca.sistemadebiblioteca.exceptions.CategoriaException;
-import com.biblioteca.sistemadebiblioteca.model.Categoria;
-import com.biblioteca.sistemadebiblioteca.repository.CategoriaRepository;
+import com.biblioteca.sistemadebiblioteca.model.dto.CategoriaDTO;
+import com.biblioteca.sistemadebiblioteca.model.exceptions.CategoriaException;
+import com.biblioteca.sistemadebiblioteca.model.domain.Categoria;
+import com.biblioteca.sistemadebiblioteca.model.repository.CategoriaRepository;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,7 +16,7 @@ public class CategoriaService {
     }
 
     public Categoria create(CategoriaDTO categoriaDTO){
-        if(categoriaRepository.findCategoriaByNome(categoriaDTO.nome())){
+        if(categoriaRepository.existsCategoriaByNome(categoriaDTO.nome())){
             throw new CategoriaException("Categoria já existe!");
         }
         Categoria newCategoria = new Categoria(categoriaDTO.nome(), categoriaDTO.descricao(), categoriaDTO.livro());

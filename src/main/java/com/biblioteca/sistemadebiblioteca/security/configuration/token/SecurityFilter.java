@@ -1,6 +1,7 @@
-package com.biblioteca.sistemadebiblioteca.security.configuration;
+package com.biblioteca.sistemadebiblioteca.security.configuration.token;
 
-import com.biblioteca.sistemadebiblioteca.repository.PessoaRepository;
+import com.biblioteca.sistemadebiblioteca.model.repository.PessoaRepository;
+import com.biblioteca.sistemadebiblioteca.security.configuration.token.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import java.io.IOException;
 public class SecurityFilter extends OncePerRequestFilter {
 
     private TokenService tokenService;
+
     private PessoaRepository pessoaRepository;
 
     SecurityFilter(TokenService tokenService, PessoaRepository pessoaRepository){

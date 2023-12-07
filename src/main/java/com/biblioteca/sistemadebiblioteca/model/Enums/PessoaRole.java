@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadebiblioteca.Enums;
+package com.biblioteca.sistemadebiblioteca.model.Enums;
 
 public enum PessoaRole {
 

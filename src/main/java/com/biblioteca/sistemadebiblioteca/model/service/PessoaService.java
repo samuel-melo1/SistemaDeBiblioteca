@@ -1,9 +1,9 @@
-package com.biblioteca.sistemadebiblioteca.service;
+package com.biblioteca.sistemadebiblioteca.model.service;
 
-import com.biblioteca.sistemadebiblioteca.dto.PessoaDTO;
-import com.biblioteca.sistemadebiblioteca.exceptions.EmailExistsException;
-import com.biblioteca.sistemadebiblioteca.model.Pessoa;
-import com.biblioteca.sistemadebiblioteca.repository.PessoaRepository;
+import com.biblioteca.sistemadebiblioteca.model.dto.PessoaDTO;
+import com.biblioteca.sistemadebiblioteca.model.exceptions.EmailExistsException;
+import com.biblioteca.sistemadebiblioteca.model.domain.Pessoa;
+import com.biblioteca.sistemadebiblioteca.model.repository.PessoaRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

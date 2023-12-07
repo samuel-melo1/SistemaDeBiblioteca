@@ -1,7 +1,7 @@
-package com.biblioteca.sistemadebiblioteca.dto;
+package com.biblioteca.sistemadebiblioteca.model.dto;
 
-import com.biblioteca.sistemadebiblioteca.Enums.PessoaRole;
-import com.biblioteca.sistemadebiblioteca.model.Emprestimo;
+import com.biblioteca.sistemadebiblioteca.model.Enums.PessoaRole;
+import com.biblioteca.sistemadebiblioteca.model.domain.Emprestimo;
 
 import java.time.LocalDate;
 import java.util.List;

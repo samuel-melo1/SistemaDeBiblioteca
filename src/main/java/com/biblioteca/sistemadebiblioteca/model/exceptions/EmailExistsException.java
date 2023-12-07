@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadebiblioteca.exceptions;
+package com.biblioteca.sistemadebiblioteca.model.exceptions;
 
 public class EmailExistsException extends  Exception {
 

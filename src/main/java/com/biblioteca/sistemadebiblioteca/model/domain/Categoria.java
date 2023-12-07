@@ -1,5 +1,6 @@
-package com.biblioteca.sistemadebiblioteca.model;
+package com.biblioteca.sistemadebiblioteca.model.domain;
 
+import com.biblioteca.sistemadebiblioteca.model.domain.Livro;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

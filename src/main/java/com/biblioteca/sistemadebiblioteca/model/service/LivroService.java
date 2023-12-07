@@ -1,12 +1,11 @@
-package com.biblioteca.sistemadebiblioteca.service;
+package com.biblioteca.sistemadebiblioteca.model.service;
 
-import com.biblioteca.sistemadebiblioteca.dto.LivroDTO;
-import com.biblioteca.sistemadebiblioteca.exceptions.LivroException;
-import com.biblioteca.sistemadebiblioteca.model.Livro;
-import com.biblioteca.sistemadebiblioteca.repository.LivroRepository;
+import com.biblioteca.sistemadebiblioteca.model.dto.LivroDTO;
+import com.biblioteca.sistemadebiblioteca.model.exceptions.LivroException;
+import com.biblioteca.sistemadebiblioteca.model.domain.Livro;
+import com.biblioteca.sistemadebiblioteca.model.repository.LivroRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -25,11 +24,7 @@ public class LivroService {
         return repository.save(newBook);
     }
     public List<Livro> getAllBooks(){
-        List<Livro> list = repository.findAll();
-        if(list.isEmpty()){
-            throw new LivroException("Não há nenhum livro cadastrado!");
-        }
-        return list;
+        return repository.findAll();
     }
     @Transactional
     public boolean deleteBook(int id_book){

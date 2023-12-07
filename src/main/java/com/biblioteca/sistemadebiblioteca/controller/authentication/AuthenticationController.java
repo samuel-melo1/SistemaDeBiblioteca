@@ -1,9 +1,9 @@
-package com.biblioteca.sistemadebiblioteca.controller;
+package com.biblioteca.sistemadebiblioteca.controller.authentication;
 
-import com.biblioteca.sistemadebiblioteca.dto.AuthenticationDTO;
-import com.biblioteca.sistemadebiblioteca.dto.LoginResponseDTO;
-import com.biblioteca.sistemadebiblioteca.model.Pessoa;
-import com.biblioteca.sistemadebiblioteca.security.configuration.TokenService;
+import com.biblioteca.sistemadebiblioteca.model.dto.AuthenticationDTO;
+import com.biblioteca.sistemadebiblioteca.model.dto.LoginResponseDTO;
+import com.biblioteca.sistemadebiblioteca.model.domain.Pessoa;
+import com.biblioteca.sistemadebiblioteca.security.configuration.token.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

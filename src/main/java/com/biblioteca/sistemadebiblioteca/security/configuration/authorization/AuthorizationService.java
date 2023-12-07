@@ -1,6 +1,6 @@
 package com.biblioteca.sistemadebiblioteca.security.configuration.authorization;
 
-import com.biblioteca.sistemadebiblioteca.repository.PessoaRepository;
+import com.biblioteca.sistemadebiblioteca.model.repository.PessoaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

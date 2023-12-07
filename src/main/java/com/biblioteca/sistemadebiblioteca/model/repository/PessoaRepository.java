@@ -1,6 +1,6 @@
-package com.biblioteca.sistemadebiblioteca.repository;
+package com.biblioteca.sistemadebiblioteca.model.repository;
 
-import com.biblioteca.sistemadebiblioteca.model.Pessoa;
+import com.biblioteca.sistemadebiblioteca.model.domain.Pessoa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 

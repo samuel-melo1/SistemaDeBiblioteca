@@ -1,5 +1,6 @@
 package com.biblioteca.sistemadebiblioteca.security.configuration;
 
+import com.biblioteca.sistemadebiblioteca.security.configuration.token.SecurityFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -32,7 +33,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET,"api/listUsers").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "api/deleteUsers/{id}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST,"api/book/createBook").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.DELETE, "api/boot/deleteBook/{id}").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "api/book/deleteBook/{id}").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "api/book/getBooks").authenticated()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
