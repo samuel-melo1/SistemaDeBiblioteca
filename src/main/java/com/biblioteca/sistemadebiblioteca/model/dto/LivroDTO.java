@@ -5,5 +5,5 @@ import com.biblioteca.sistemadebiblioteca.model.domain.Emprestimo;
 
 import java.util.List;
 
-public record LivroDTO(Integer id_livro, String titulo, List<Emprestimo> emprestimo, Categoria categoria) {
+public record LivroDTO(String titulo, Categoria categoria) {
 }
