@@ -6,6 +6,8 @@ import com.biblioteca.sistemadebiblioteca.model.domain.Categoria;
 import com.biblioteca.sistemadebiblioteca.model.repository.CategoriaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CategoriaService {
 
@@ -15,11 +17,20 @@ public class CategoriaService {
         this.categoriaRepository = categoriaRepository;
     }
 
-    public Categoria create(CategoriaDTO categoriaDTO){
+    public Categoria create(CategoriaDTO categoriaDTO) throws CategoriaException {
         if(categoriaRepository.existsCategoriaByNome(categoriaDTO.nome())){
             throw new CategoriaException("Categoria já existe!");
         }
-        Categoria newCategoria = new Categoria(categoriaDTO.nome(), categoriaDTO.descricao(), categoriaDTO.livro());
+        Categoria newCategoria = new Categoria();
+        newCategoria.setDescricao(categoriaDTO.descricao());
+        newCategoria.setNome(categoriaDTO.nome());
         return categoriaRepository.save(newCategoria);
+    }
+
+    public List<Categoria> getCategorias() throws CategoriaException {
+        if (categoriaRepository.findAll().isEmpty()){
+            throw new CategoriaException("Não existe Categoria cadastrada!");
+        }
+        return categoriaRepository.findAll();
     }
 }

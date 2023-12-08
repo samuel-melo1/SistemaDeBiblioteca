@@ -2,13 +2,15 @@ package com.biblioteca.sistemadebiblioteca.controller.domainController;
 
 import com.biblioteca.sistemadebiblioteca.model.dto.CategoriaDTO;
 import com.biblioteca.sistemadebiblioteca.model.domain.Categoria;
+import com.biblioteca.sistemadebiblioteca.model.exceptions.CategoriaException;
 import com.biblioteca.sistemadebiblioteca.model.service.CategoriaService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/categoria")
@@ -22,8 +24,20 @@ public class CategoriaController {
 
     @PostMapping("/createCategoria")
     public ResponseEntity<Categoria> create(@RequestBody @Valid CategoriaDTO categoriaDTO){
-       Categoria categoria = categoriaService.create(categoriaDTO);
-        return ResponseEntity.ok(categoria);
-
+        try {
+            Categoria categoria = categoriaService.create(categoriaDTO);
+            return ResponseEntity.ok(categoria);
+        }catch (CategoriaException exception){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
+    @GetMapping("/getCategorias")
+    public ResponseEntity<List<Categoria>> getCategorias(){
+        try{
+            List<Categoria> listCategoria = categoriaService.getCategorias();
+            return ResponseEntity.ok(listCategoria);
+        }catch (CategoriaException exception){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 }
