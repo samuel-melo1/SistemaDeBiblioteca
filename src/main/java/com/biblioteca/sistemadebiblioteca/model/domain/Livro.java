@@ -1,5 +1,6 @@
 package com.biblioteca.sistemadebiblioteca.model.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,6 +23,7 @@ public class Livro {
     private List<Emprestimo> emprestimo;
 
     @ManyToOne
+    @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 
     public Livro(String titulo, Categoria categoria){
