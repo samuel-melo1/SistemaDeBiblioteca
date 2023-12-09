@@ -19,7 +19,8 @@ public class Livro {
     private Integer id_livro;
 
     private String titulo;
-    @OneToMany(mappedBy = "livro")
+
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
     private List<Emprestimo> emprestimo;
 
     @ManyToOne
@@ -31,5 +32,4 @@ public class Livro {
         this.categoria = categoria;
 
     }
-
 }

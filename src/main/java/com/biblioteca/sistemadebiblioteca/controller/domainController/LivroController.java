@@ -3,6 +3,7 @@ package com.biblioteca.sistemadebiblioteca.controller.domainController;
 import com.biblioteca.sistemadebiblioteca.model.dto.CategoriaDTO;
 import com.biblioteca.sistemadebiblioteca.model.dto.LivroDTO;
 import com.biblioteca.sistemadebiblioteca.model.domain.Livro;
+import com.biblioteca.sistemadebiblioteca.model.exceptions.LivroException;
 import com.biblioteca.sistemadebiblioteca.model.service.LivroService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -32,10 +33,10 @@ public class LivroController {
     @DeleteMapping("/deleteBook/{id}")
     public ResponseEntity delete(@PathVariable("id") int id){
         try{
-            boolean bookDeleted = service.deleteBook(id);
+            service.deleteBook(id);
             return ResponseEntity.ok().build();
-        }catch (Exception error){
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }catch (LivroException error){
+           return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
 }
