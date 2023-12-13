@@ -1,5 +1,6 @@
 package com.biblioteca.sistemadebiblioteca.model.domain;
 
+import com.biblioteca.sistemadebiblioteca.model.Enums.LivroEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,5 +25,14 @@ public class Emprestimo {
 
     @ManyToOne
     private Livro livro;
+
+    private LivroEnum status;
+
+    public Emprestimo(LocalDate data_emprestimo, LocalDate prazo, Pessoa pessoa, Livro livro){
+        this.data_emprestimo = data_emprestimo;
+        this.prazo = prazo;
+        this.pessoa = pessoa;
+        this.livro = livro;
+    }
 
 }
