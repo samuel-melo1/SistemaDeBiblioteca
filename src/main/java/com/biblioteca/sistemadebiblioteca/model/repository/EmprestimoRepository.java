@@ -9,6 +9,6 @@ import java.util.Optional;
 
 public interface EmprestimoRepository extends JpaRepository<Emprestimo, Integer> {
 
-    Livro findByLivro(Livro livro);
+
 
 }
