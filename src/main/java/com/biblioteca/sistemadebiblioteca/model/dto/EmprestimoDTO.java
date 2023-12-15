@@ -5,5 +5,6 @@ import com.biblioteca.sistemadebiblioteca.model.domain.Pessoa;
 
 import java.time.LocalDate;
 
+
 public record EmprestimoDTO(LocalDate data_emprestimo, LocalDate prazo, Livro livro, Pessoa pessoa) {
 }
