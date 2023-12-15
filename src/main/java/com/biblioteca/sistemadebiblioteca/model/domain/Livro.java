@@ -1,5 +1,6 @@
 package com.biblioteca.sistemadebiblioteca.model.domain;
 
+import com.biblioteca.sistemadebiblioteca.model.Enums.LivroEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -20,13 +21,14 @@ public class Livro {
 
     private String titulo;
 
-    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "livro", cascade = CascadeType.ALL)
     private List<Emprestimo> emprestimo;
 
     @ManyToOne
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 
+    private LivroEnum status;
     public Livro(String titulo, Categoria categoria){
         this.titulo = titulo;
         this.categoria = categoria;
