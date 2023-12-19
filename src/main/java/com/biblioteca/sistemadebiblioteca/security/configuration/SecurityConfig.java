@@ -35,6 +35,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST,"api/book/createBook").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "api/book/deleteBook/{id}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST,"/api/categoria/createCategoria").hasRole("ADMIN")
+                        .requestMatchers(AUTH_WHITELIST).permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
@@ -50,6 +51,13 @@ public class SecurityConfig {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
+    public static final String[] AUTH_WHITELIST = {
+        "/api/v1/auth/**",
+        "/v3/api-docs/**",
+        "/v3/api-docs.yaml",
+        "/swagger-ui.html",
+        "/swagger-ui/**"
 
+    };
 
 }
