@@ -34,14 +34,13 @@ public class Pessoa implements UserDetails {
     @OneToMany(mappedBy = "pessoa")
     private List<Emprestimo> emprestimo;
 
-    public Pessoa(String nome,String cpf,LocalDate data_nascimento, String endereco, String email,  String senha,PessoaRole role, List<Emprestimo> emprestimo){
+    public Pessoa(String nome,String cpf,LocalDate data_nascimento, String endereco, String email,  String senha,PessoaRole role){
         this.role = role;
         this.nome = nome;
         this.cpf = cpf;
         this.data_nascimento = data_nascimento;
         this.endereco = endereco;
         this.senha = senha;
-        this.emprestimo = emprestimo;
         this.email = email;
     }
     @JsonIgnore

@@ -30,8 +30,7 @@ public class PessoaService {
                 pessoaDTO.endereco(),
                 pessoaDTO.email(),
                 encryptedPassword,
-                pessoaDTO.role(),
-                pessoaDTO.emprestimo());
+                pessoaDTO.role());
 
         return pessoaRepository.save(newUser);
     }
@@ -47,5 +46,4 @@ public class PessoaService {
         pessoaRepository.deleteById(id_pessoa);
         return true;
     }
-
 }

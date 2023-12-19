@@ -29,19 +29,17 @@ public class PessoaController {
     public ResponseEntity<List<Pessoa>> list(){
         try{
             List<Pessoa> list = pessoaService.getAll();
-
-            if(list.isEmpty()){ return new ResponseEntity<>(HttpStatus.NO_CONTENT); }
+            if(list.isEmpty()){ return new ResponseEntity<>(HttpStatus.NOT_FOUND); }
             return new ResponseEntity<>(list, HttpStatus.OK);
         }catch (Exception exception){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
     }
     @DeleteMapping("/deleteUsers/{id}")
     public ResponseEntity delete(@PathVariable int id){
         try{
-            boolean pessoaDeletada = pessoaService.deletePessoa(id);
-            if(pessoaDeletada == false){
+            boolean deletePessoa = pessoaService.deletePessoa(id);
+            if(deletePessoa == false){
                 return new ResponseEntity(HttpStatus.NOT_FOUND);
             }
             return ResponseEntity.ok().build();

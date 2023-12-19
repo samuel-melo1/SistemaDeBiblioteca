@@ -25,7 +25,7 @@ public class EmprestimoController {
     @PostMapping("/emprestar")
     public ResponseEntity<Emprestimo> emprestar(@RequestBody EmprestimoDTO emprestimoDTO){
         var emprestimo = new Emprestimo();
-        BeanUtils.copyProperties(emprestimoDTO, emprestimo); //converte o dto para um model
+        BeanUtils.copyProperties(emprestimoDTO, emprestimo);
         try {
             this.emprestimo.emprestar(emprestimo);
             return new ResponseEntity(emprestimoDTO, HttpStatus.OK);

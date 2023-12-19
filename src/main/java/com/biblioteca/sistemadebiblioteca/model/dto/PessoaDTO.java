@@ -12,6 +12,5 @@ public record PessoaDTO(String nome,
                         String email,
                         String senha,
                         PessoaRole role,
-                        List<Emprestimo> emprestimo,
                         String endereco) {
 }
