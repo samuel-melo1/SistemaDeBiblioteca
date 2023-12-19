@@ -21,6 +21,7 @@ public class Livro {
 
     private String titulo;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "livro", cascade = CascadeType.ALL)
     private List<Emprestimo> emprestimo;
 
@@ -32,6 +33,5 @@ public class Livro {
     public Livro(String titulo, Categoria categoria){
         this.titulo = titulo;
         this.categoria = categoria;
-
     }
 }

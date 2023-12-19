@@ -1,6 +1,7 @@
 package com.biblioteca.sistemadebiblioteca.model.domain;
 
 import com.biblioteca.sistemadebiblioteca.model.Enums.PessoaRole;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -29,7 +30,7 @@ public class Pessoa implements UserDetails {
     private String senha;
     private PessoaRole role;
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "pessoa")
     private List<Emprestimo> emprestimo;
 
@@ -43,8 +44,7 @@ public class Pessoa implements UserDetails {
         this.emprestimo = emprestimo;
         this.email = email;
     }
-
-
+    @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if(this.role == PessoaRole.ADMIN){
@@ -54,7 +54,6 @@ public class Pessoa implements UserDetails {
             return List.of(new SimpleGrantedAuthority("ROLE_USER"));
         }
     }
-
     @Override
     public String getPassword() {
         return senha;
