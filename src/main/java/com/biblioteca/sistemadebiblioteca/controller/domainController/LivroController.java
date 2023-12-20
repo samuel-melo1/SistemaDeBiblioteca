@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/book")
+@RequestMapping("/api/v1/book")
 public class LivroController {
 
     private LivroService service;
@@ -36,7 +36,7 @@ public class LivroController {
             service.deleteBook(id);
             return ResponseEntity.ok().build();
         }catch (LivroException error){
-           return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            return new ResponseEntity(error.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 }
