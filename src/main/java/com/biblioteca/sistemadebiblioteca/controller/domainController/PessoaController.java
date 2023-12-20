@@ -3,6 +3,7 @@ package com.biblioteca.sistemadebiblioteca.controller.domainController;
 import com.biblioteca.sistemadebiblioteca.model.dto.PessoaDTO;
 import com.biblioteca.sistemadebiblioteca.model.exceptions.EmailExistsException;
 import com.biblioteca.sistemadebiblioteca.model.domain.Pessoa;
+import com.biblioteca.sistemadebiblioteca.model.exceptions.PessoaException;
 import com.biblioteca.sistemadebiblioteca.model.service.PessoaService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -17,34 +18,33 @@ public class PessoaController {
 
     private PessoaService pessoaService;
 
-    PessoaController(PessoaService pessoaService){
+    PessoaController(PessoaService pessoaService) {
         this.pessoaService = pessoaService;
     }
+
     @PostMapping("/register")
     public ResponseEntity create(@RequestBody @Valid PessoaDTO pessoaDTO) throws EmailExistsException {
-         this.pessoaService.register(pessoaDTO);
-         return ResponseEntity.ok().build();
+        this.pessoaService.register(pessoaDTO);
+        return ResponseEntity.ok().build();
     }
+
     @GetMapping("/listUsers")
-    public ResponseEntity<List<Pessoa>> list(){
-        try{
+    public ResponseEntity<List<Pessoa>> list() {
+        try {
             List<Pessoa> list = pessoaService.getAll();
-            if(list.isEmpty()){ return new ResponseEntity<>(HttpStatus.NOT_FOUND); }
-            return new ResponseEntity<>(list, HttpStatus.OK);
-        }catch (Exception exception){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return ResponseEntity.ok(list);
+        } catch (PessoaException exception) {
+            return new ResponseEntity(exception.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+
     @DeleteMapping("/deleteUsers/{id}")
-    public ResponseEntity delete(@PathVariable int id){
-        try{
+    public ResponseEntity<Void> delete(@PathVariable int id) {
+        try {
             boolean deletePessoa = pessoaService.deletePessoa(id);
-            if(deletePessoa == false){
-                return new ResponseEntity(HttpStatus.NOT_FOUND);
-            }
-            return ResponseEntity.ok().build();
-        }catch (Exception error){
-           return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(deletePessoa, HttpStatus.OK);
+        }catch (PessoaException exception){
+            return new ResponseEntity(exception.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 }
