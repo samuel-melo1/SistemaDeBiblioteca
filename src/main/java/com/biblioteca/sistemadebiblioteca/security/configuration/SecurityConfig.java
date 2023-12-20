@@ -29,9 +29,9 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.POST,"/api/register").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET,"api/listUsers").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.DELETE, "api/deleteUsers/{id}").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST,"/api/v1/register").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET,"api/v1/listUsers").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "api/v1/deleteUsers/{id}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST,"api/book/createBook").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "api/book/deleteBook/{id}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST,"/api/categoria/createCategoria").hasRole("ADMIN")
