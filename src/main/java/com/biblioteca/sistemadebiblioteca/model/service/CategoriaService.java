@@ -20,9 +20,7 @@ public class CategoriaService {
         if(categoriaRepository.existsCategoriaByNome(categoriaDTO.nome())){
             throw new CategoriaException("Categoria já existe!");
         }
-        Categoria newCategoria = new Categoria();
-        newCategoria.setDescricao(categoriaDTO.descricao());
-        newCategoria.setNome(categoriaDTO.nome());
+        Categoria newCategoria = new Categoria(categoriaDTO.nome(),categoriaDTO.descricao());
         return categoriaRepository.save(newCategoria);
     }
 
