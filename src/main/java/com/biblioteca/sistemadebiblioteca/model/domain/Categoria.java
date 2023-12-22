@@ -16,8 +16,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Categoria implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,5 +28,10 @@ public class Categoria implements Serializable {
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Livro> livro;
+
+    public Categoria(String nome, String descricao){
+        this.nome = nome;
+        this.descricao = descricao;
+    }
 
 }
