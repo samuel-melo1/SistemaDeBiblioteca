@@ -20,15 +20,12 @@ public class Livro {
     private Integer id_livro;
 
     private String titulo;
-
     @JsonIgnore
     @OneToMany(mappedBy = "livro", cascade = CascadeType.ALL)
     private List<Emprestimo> emprestimo;
-
     @ManyToOne
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
-
     private LivroEnum status;
     public Livro(String titulo, Categoria categoria){
         this.titulo = titulo;

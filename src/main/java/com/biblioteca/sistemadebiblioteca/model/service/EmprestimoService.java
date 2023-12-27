@@ -21,25 +21,21 @@ public class EmprestimoService {
     private LivroService service;
     private LivroRepository livroRepository;
 
-
-
-
-    public EmprestimoService(EmprestimoRepository repository, LivroRepository livroRepository){
+    public EmprestimoService(EmprestimoRepository repository, LivroRepository livroRepository) {
         this.repository = repository;
         this.livroRepository = livroRepository;
     }
 
-    public Emprestimo emprestar(Emprestimo emprestimo){
+    public Emprestimo emprestar(Emprestimo emprestimo) {
         Livro livro = livroRepository.findLivroByTitulo(emprestimo.getLivro().getTitulo());
-
-
-       if(livro.getStatus() == LivroEnum.EMPRESTADO){
-           throw new LivroException("Livro Já está emprestado!");
-       }
-       Emprestimo newEmprestimo = new Emprestimo(LocalDate.now(), LocalDate.now().plusDays(7), emprestimo.getPessoa(),livro);
-       livro.setStatus(LivroEnum.EMPRESTADO);
-       livroRepository.save(livro);
-       return repository.save(newEmprestimo);
+        if (livro.getStatus() == LivroEnum.EMPRESTADO) {
+            throw new LivroException("Livro Já está emprestado!");
+        }
+        Emprestimo newEmprestimo = new Emprestimo(LocalDate.now(), LocalDate.now().plusDays(7), emprestimo.getPessoa(), livro);
+        livro.setStatus(LivroEnum.EMPRESTADO);
+        livroRepository.save(livro);
+        return repository.save(newEmprestimo);
     }
+
 
 }

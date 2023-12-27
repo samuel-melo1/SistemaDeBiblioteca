@@ -34,7 +34,7 @@ public class PessoaController {
             List<Pessoa> list = pessoaService.getAll();
             return ResponseEntity.ok(list);
         } catch (PessoaException exception) {
-            return new ResponseEntity(exception.getMessage(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(exception.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 

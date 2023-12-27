@@ -21,11 +21,9 @@ public class Emprestimo {
 
     private LocalDate data_emprestimo;
     private LocalDate prazo;
-
     @ManyToOne
     @JoinColumn(name = "id_pessoa")
     private Pessoa pessoa;
-
     @ManyToOne
     @JoinColumn(name = "id_livro")
     private Livro livro;
