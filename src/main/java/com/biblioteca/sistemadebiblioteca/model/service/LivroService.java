@@ -35,7 +35,7 @@ public class LivroService {
     public boolean deleteBook(int id_book) throws LivroException {
         Optional<Livro> livro_id = repository.findById(id_book);
         if (livro_id.isEmpty()) {
-            throw new LivroException("Livro em questão não está em prateleira!");
+            throw new LivroException("Livro em questão não está em disponivel!");
         }
         repository.deleteById(id_book);
         return true;
