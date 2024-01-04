@@ -1,6 +1,7 @@
 package com.biblioteca.sistemadebiblioteca.model.service;
 
 
+import com.biblioteca.sistemadebiblioteca.configuration.security.rabbitProducer.configs.producers.EmprestimoProducer;
 import com.biblioteca.sistemadebiblioteca.model.Enums.LivroEnum;
 import com.biblioteca.sistemadebiblioteca.model.domain.Emprestimo;
 import com.biblioteca.sistemadebiblioteca.model.domain.Livro;
@@ -20,6 +21,7 @@ public class EmprestimoService {
     private EmprestimoRepository repository;
     private LivroService service;
     private LivroRepository livroRepository;
+    private EmprestimoProducer emprestimoProducer;
 
     public EmprestimoService(EmprestimoRepository repository, LivroRepository livroRepository) {
         this.repository = repository;
@@ -34,6 +36,7 @@ public class EmprestimoService {
         Emprestimo newEmprestimo = new Emprestimo(LocalDate.now(), LocalDate.now().plusDays(7), emprestimo.getPessoa(), livro);
         livro.setStatus(LivroEnum.EMPRESTADO);
         livroRepository.save(livro);
+        emprestimoProducer.publishedMessageEmail(newEmprestimo);
         return repository.save(newEmprestimo);
     }
 
