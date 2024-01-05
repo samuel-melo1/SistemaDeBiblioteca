@@ -27,7 +27,7 @@ public class EmprestimoProducer {
         emailDto.setText("Prezado(a) " + emprestimo.getPessoa().getNome() +
                 ", \nConfirmamos o empréstimo do livro " + emprestimo.getLivro().getTitulo() +
                 " realizado por você. Por favor, lembre-se de devolvê-lo até " + emprestimo.getPrazo() +
-                "para evitar atrasos.\n" +
+                " para evitar atrasos.\n" +
                 "\n");
 
         rabbitTemplate.convertAndSend("", routingKey, emailDto);

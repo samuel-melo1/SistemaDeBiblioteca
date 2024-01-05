@@ -23,9 +23,10 @@ public class EmprestimoService {
     private LivroRepository livroRepository;
     private EmprestimoProducer emprestimoProducer;
 
-    public EmprestimoService(EmprestimoRepository repository, LivroRepository livroRepository) {
+    public EmprestimoService(EmprestimoRepository repository, LivroRepository livroRepository, EmprestimoProducer emprestimoProducer) {
         this.repository = repository;
         this.livroRepository = livroRepository;
+        this.emprestimoProducer = emprestimoProducer;
     }
 
     public Emprestimo emprestar(Emprestimo emprestimo) {
