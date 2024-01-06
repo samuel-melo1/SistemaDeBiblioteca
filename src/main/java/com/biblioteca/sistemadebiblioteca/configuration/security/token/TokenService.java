@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadebiblioteca.security.configuration.token;
+package com.biblioteca.sistemadebiblioteca.configuration.security.token;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
