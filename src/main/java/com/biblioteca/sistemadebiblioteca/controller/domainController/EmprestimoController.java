@@ -31,7 +31,7 @@ public class EmprestimoController {
             return new ResponseEntity(emprestimoDTO, HttpStatus.OK);
 
         }catch (EmprestimoException exception){
-            return new ResponseEntity(exception.getMessage(), HttpStatus.NO_CONTENT);
+            return new ResponseEntity(exception.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 }
