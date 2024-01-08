@@ -26,7 +26,7 @@ public class CategoriaController {
             Categoria categoria = categoriaService.create(categoriaDTO);
             return ResponseEntity.ok(categoria);
         }catch (CategoriaException exception){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
     }
     @GetMapping("/getCategorias")
