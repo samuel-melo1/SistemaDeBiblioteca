@@ -1,6 +1,6 @@
 package com.biblioteca.sistemadebiblioteca.configuration.security;
 
-import com.biblioteca.sistemadebiblioteca.configuration.security.token.SecurityFilter;
+import com.biblioteca.sistemadebiblioteca.configuration.token.SecurityFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
