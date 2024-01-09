@@ -1,10 +1,10 @@
 package com.biblioteca.sistemadebiblioteca.domain.service;
 
-import com.biblioteca.sistemadebiblioteca.domain.model.domain.Pessoa;
+import com.biblioteca.sistemadebiblioteca.domain.model.entity.Pessoa;
 import com.biblioteca.sistemadebiblioteca.domain.model.dto.PessoaDTO;
-import com.biblioteca.sistemadebiblioteca.domain.model.repository.PessoaRepository;
-import com.biblioteca.sistemadebiblioteca.infrastructure.adapters.exceptions.EmailExistsException;
-import com.biblioteca.sistemadebiblioteca.infrastructure.adapters.exceptions.PessoaException;
+import com.biblioteca.sistemadebiblioteca.config.db.repository.PessoaRepository;
+import com.biblioteca.sistemadebiblioteca.config.exceptions.EmailExistsException;
+import com.biblioteca.sistemadebiblioteca.config.exceptions.PessoaException;
 import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

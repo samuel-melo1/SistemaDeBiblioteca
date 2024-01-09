@@ -1,9 +1,9 @@
 package com.biblioteca.sistemadebiblioteca.domain.service;
 
-import com.biblioteca.sistemadebiblioteca.domain.model.domain.Categoria;
+import com.biblioteca.sistemadebiblioteca.domain.model.entity.Categoria;
 import com.biblioteca.sistemadebiblioteca.domain.model.dto.CategoriaDTO;
-import com.biblioteca.sistemadebiblioteca.domain.model.repository.CategoriaRepository;
-import com.biblioteca.sistemadebiblioteca.infrastructure.adapters.exceptions.CategoriaException;
+import com.biblioteca.sistemadebiblioteca.config.db.repository.CategoriaRepository;
+import com.biblioteca.sistemadebiblioteca.config.exceptions.CategoriaException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

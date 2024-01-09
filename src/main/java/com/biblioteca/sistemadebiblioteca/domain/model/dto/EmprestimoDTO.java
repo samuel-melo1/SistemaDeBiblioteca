@@ -1,7 +1,7 @@
 package com.biblioteca.sistemadebiblioteca.domain.model.dto;
 
-import com.biblioteca.sistemadebiblioteca.domain.model.domain.Livro;
-import com.biblioteca.sistemadebiblioteca.domain.model.domain.Pessoa;
+import com.biblioteca.sistemadebiblioteca.domain.model.entity.Livro;
+import com.biblioteca.sistemadebiblioteca.domain.model.entity.Pessoa;
 
 import java.time.LocalDate;
 

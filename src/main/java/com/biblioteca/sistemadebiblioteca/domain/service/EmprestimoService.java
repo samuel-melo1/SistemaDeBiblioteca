@@ -1,13 +1,13 @@
 package com.biblioteca.sistemadebiblioteca.domain.service;
 
 
-import com.biblioteca.sistemadebiblioteca.configuration.rabbitProducer.configs.producers.EmprestimoProducer;
+import com.biblioteca.sistemadebiblioteca.config.microservice.config.producers.EmprestimoProducer;
 import com.biblioteca.sistemadebiblioteca.domain.model.Enums.LivroEnum;
-import com.biblioteca.sistemadebiblioteca.domain.model.domain.Emprestimo;
-import com.biblioteca.sistemadebiblioteca.domain.model.domain.Livro;
-import com.biblioteca.sistemadebiblioteca.infrastructure.adapters.exceptions.LivroException;
-import com.biblioteca.sistemadebiblioteca.domain.model.repository.EmprestimoRepository;
-import com.biblioteca.sistemadebiblioteca.domain.model.repository.LivroRepository;
+import com.biblioteca.sistemadebiblioteca.domain.model.entity.Emprestimo;
+import com.biblioteca.sistemadebiblioteca.domain.model.entity.Livro;
+import com.biblioteca.sistemadebiblioteca.config.exceptions.LivroException;
+import com.biblioteca.sistemadebiblioteca.config.db.repository.EmprestimoRepository;
+import com.biblioteca.sistemadebiblioteca.config.db.repository.LivroRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

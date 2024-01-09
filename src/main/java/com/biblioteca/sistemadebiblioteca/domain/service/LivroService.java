@@ -1,9 +1,9 @@
 package com.biblioteca.sistemadebiblioteca.domain.service;
 
 import com.biblioteca.sistemadebiblioteca.domain.model.dto.LivroDTO;
-import com.biblioteca.sistemadebiblioteca.infrastructure.adapters.exceptions.LivroException;
-import com.biblioteca.sistemadebiblioteca.domain.model.domain.Livro;
-import com.biblioteca.sistemadebiblioteca.domain.model.repository.LivroRepository;
+import com.biblioteca.sistemadebiblioteca.config.exceptions.LivroException;
+import com.biblioteca.sistemadebiblioteca.domain.model.entity.Livro;
+import com.biblioteca.sistemadebiblioteca.config.db.repository.LivroRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
