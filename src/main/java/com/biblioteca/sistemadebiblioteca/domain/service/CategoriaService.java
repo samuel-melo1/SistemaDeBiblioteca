@@ -27,7 +27,7 @@ public class CategoriaService {
 
     public List<Categoria> getCategorias() throws CategoriaException {
         if (categoriaRepository.findAll().isEmpty()) {
-            throw new CategoriaException("Não existe Categoria cadastrada!");
+            throw new CategoriaException();
         }
         return categoriaRepository.findAll();
     }
