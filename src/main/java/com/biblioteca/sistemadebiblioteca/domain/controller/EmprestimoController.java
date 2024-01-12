@@ -2,7 +2,7 @@ package com.biblioteca.sistemadebiblioteca.domain.controller;
 
 import com.biblioteca.sistemadebiblioteca.domain.model.entity.Emprestimo;
 import com.biblioteca.sistemadebiblioteca.domain.model.dto.EmprestimoDTO;
-import com.biblioteca.sistemadebiblioteca.config.exceptions.EmprestimoException;
+import com.biblioteca.sistemadebiblioteca.config.exceptions.emprestimoException.EmprestimoException;
 import com.biblioteca.sistemadebiblioteca.domain.service.EmprestimoService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;

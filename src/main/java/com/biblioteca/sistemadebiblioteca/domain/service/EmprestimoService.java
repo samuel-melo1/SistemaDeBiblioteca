@@ -5,7 +5,7 @@ import com.biblioteca.sistemadebiblioteca.config.microservice.config.producers.E
 import com.biblioteca.sistemadebiblioteca.domain.model.Enums.LivroEnum;
 import com.biblioteca.sistemadebiblioteca.domain.model.entity.Emprestimo;
 import com.biblioteca.sistemadebiblioteca.domain.model.entity.Livro;
-import com.biblioteca.sistemadebiblioteca.config.exceptions.LivroException;
+import com.biblioteca.sistemadebiblioteca.config.exceptions.livroException.LivroException;
 import com.biblioteca.sistemadebiblioteca.config.db.repository.EmprestimoRepository;
 import com.biblioteca.sistemadebiblioteca.config.db.repository.LivroRepository;
 import org.springframework.stereotype.Service;

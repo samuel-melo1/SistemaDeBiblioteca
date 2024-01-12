@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadebiblioteca.config.exceptions;
+package com.biblioteca.sistemadebiblioteca.config.exceptions.emailException;
 
 public class EmailExistsException extends  RuntimeException {
 
