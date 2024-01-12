@@ -1,9 +1,9 @@
 package com.biblioteca.sistemadebiblioteca.domain.controller;
 
 import com.biblioteca.sistemadebiblioteca.domain.model.dto.PessoaDTO;
-import com.biblioteca.sistemadebiblioteca.config.exceptions.EmailExistsException;
+import com.biblioteca.sistemadebiblioteca.config.exceptions.emailException.EmailExistsException;
 import com.biblioteca.sistemadebiblioteca.domain.model.entity.Pessoa;
-import com.biblioteca.sistemadebiblioteca.config.exceptions.PessoaException;
+import com.biblioteca.sistemadebiblioteca.config.exceptions.pessoaException.PessoaException;
 import com.biblioteca.sistemadebiblioteca.domain.service.PessoaService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

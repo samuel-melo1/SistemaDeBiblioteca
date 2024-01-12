@@ -2,10 +2,8 @@ package com.biblioteca.sistemadebiblioteca.domain.controller;
 
 import com.biblioteca.sistemadebiblioteca.domain.model.dto.CategoriaDTO;
 import com.biblioteca.sistemadebiblioteca.domain.model.entity.Categoria;
-import com.biblioteca.sistemadebiblioteca.config.exceptions.CategoriaException;
 import com.biblioteca.sistemadebiblioteca.domain.service.CategoriaService;
 import jakarta.validation.Valid;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,12 +21,8 @@ public class CategoriaController {
 
     @PostMapping("/createCategoria")
     public ResponseEntity<Categoria> create(@RequestBody @Valid CategoriaDTO categoriaDTO) {
-        try {
-            Categoria categoria = categoriaService.create(categoriaDTO);
-            return ResponseEntity.ok(categoria);
-        } catch (CategoriaException exception) {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-        }
+        Categoria categoria = categoriaService.create(categoriaDTO);
+        return ResponseEntity.ok(categoria);
     }
 
     @GetMapping("/getCategorias")

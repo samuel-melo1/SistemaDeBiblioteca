@@ -1,9 +1,10 @@
 package com.biblioteca.sistemadebiblioteca.domain.service;
 
+import com.biblioteca.sistemadebiblioteca.config.exceptions.categoriaException.CategoriaExistException;
 import com.biblioteca.sistemadebiblioteca.domain.model.entity.Categoria;
 import com.biblioteca.sistemadebiblioteca.domain.model.dto.CategoriaDTO;
 import com.biblioteca.sistemadebiblioteca.config.db.repository.CategoriaRepository;
-import com.biblioteca.sistemadebiblioteca.config.exceptions.CategoriaException;
+import com.biblioteca.sistemadebiblioteca.config.exceptions.categoriaException.CategoriaNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,17 +18,17 @@ public class CategoriaService {
         this.categoriaRepository = categoriaRepository;
     }
 
-    public Categoria create(CategoriaDTO categoriaDTO) throws CategoriaException {
+    public Categoria create(CategoriaDTO categoriaDTO){
         if (categoriaRepository.existsCategoriaByNome(categoriaDTO.nome())) {
-            throw new CategoriaException("Categoria já existe!");
+            throw new CategoriaExistException();
         }
         Categoria newCategoria = new Categoria(categoriaDTO.nome(), categoriaDTO.descricao());
         return categoriaRepository.save(newCategoria);
     }
 
-    public List<Categoria> getCategorias() throws CategoriaException {
+    public List<Categoria> getCategorias(){
         if (categoriaRepository.findAll().isEmpty()) {
-            throw new CategoriaException();
+            throw new CategoriaNotFoundException();
         }
         return categoriaRepository.findAll();
     }
