@@ -5,7 +5,7 @@ import com.biblioteca.sistemadebiblioteca.config.microservice.config.producers.E
 import com.biblioteca.sistemadebiblioteca.domain.model.Enums.LivroEnum;
 import com.biblioteca.sistemadebiblioteca.domain.model.entity.Emprestimo;
 import com.biblioteca.sistemadebiblioteca.domain.model.entity.Livro;
-import com.biblioteca.sistemadebiblioteca.config.exceptions.livroException.LivroException;
+import com.biblioteca.sistemadebiblioteca.config.exceptions.livroException.LivroExistsException;
 import com.biblioteca.sistemadebiblioteca.config.db.repository.EmprestimoRepository;
 import com.biblioteca.sistemadebiblioteca.config.db.repository.LivroRepository;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,7 @@ public class EmprestimoService {
     public Emprestimo emprestar(Emprestimo emprestimo) {
         Livro livro = livroRepository.findLivroByTitulo(emprestimo.getLivro().getTitulo());
         if (livro.getStatus() == LivroEnum.EMPRESTADO) {
-            throw new LivroException("Livro Já está emprestado!");
+            throw new LivroExistsException("Livro Já está emprestado!");
         }
         Emprestimo newEmprestimo = new Emprestimo(LocalDate.now(), LocalDate.now().plusDays(7), emprestimo.getPessoa(), livro);
         livro.setStatus(LivroEnum.EMPRESTADO);

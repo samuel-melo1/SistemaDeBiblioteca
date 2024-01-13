@@ -2,7 +2,7 @@ package com.biblioteca.sistemadebiblioteca.domain.controller;
 
 import com.biblioteca.sistemadebiblioteca.domain.model.dto.LivroDTO;
 import com.biblioteca.sistemadebiblioteca.domain.model.entity.Livro;
-import com.biblioteca.sistemadebiblioteca.config.exceptions.livroException.LivroException;
+import com.biblioteca.sistemadebiblioteca.config.exceptions.livroException.LivroExistsException;
 import com.biblioteca.sistemadebiblioteca.domain.service.LivroService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -16,26 +16,27 @@ import java.util.List;
 public class LivroController {
 
     private LivroService service;
-    public LivroController(LivroService service){
+
+    public LivroController(LivroService service) {
         this.service = service;
     }
+
     @PostMapping("/createBook")
-    public ResponseEntity<Livro> createBook(@RequestBody @Valid LivroDTO livroDTO){
+    public ResponseEntity<Livro> createBook(@RequestBody @Valid LivroDTO livroDTO) {
         this.service.createBook(livroDTO);
-        return new ResponseEntity(livroDTO,HttpStatus.OK);
+        return new ResponseEntity(livroDTO, HttpStatus.OK);
     }
+
     @GetMapping("/getBooks")
-    public ResponseEntity<List<Livro>> getAllBooks(){
-       List<Livro> list = service.getAllBooks();
+    public ResponseEntity<List<Livro>> getAllBooks() {
+        List<Livro> list = service.getAllBooks();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
+
     @DeleteMapping("/deleteBook/{id}")
-    public ResponseEntity delete(@PathVariable("id") int id){
-        try{
-            service.deleteBook(id);
-            return ResponseEntity.ok().build();
-        }catch (LivroException error){
-            return new ResponseEntity(error.getMessage(), HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity delete(@PathVariable("id") int id) {
+        service.deleteBook(id);
+        return ResponseEntity.ok().build();
+
     }
 }

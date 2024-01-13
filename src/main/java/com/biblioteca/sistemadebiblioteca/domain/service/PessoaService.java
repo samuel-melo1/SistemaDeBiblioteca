@@ -3,8 +3,8 @@ package com.biblioteca.sistemadebiblioteca.domain.service;
 import com.biblioteca.sistemadebiblioteca.domain.model.entity.Pessoa;
 import com.biblioteca.sistemadebiblioteca.domain.model.dto.PessoaDTO;
 import com.biblioteca.sistemadebiblioteca.config.db.repository.PessoaRepository;
-import com.biblioteca.sistemadebiblioteca.config.exceptions.emailException.EmailExistsException;
-import com.biblioteca.sistemadebiblioteca.config.exceptions.pessoaException.PessoaException;
+import com.biblioteca.sistemadebiblioteca.config.exceptions.pessoaException.PessoaEmailException;
+import com.biblioteca.sistemadebiblioteca.config.exceptions.pessoaException.PessoaNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,9 +21,9 @@ public class PessoaService {
 
     }
 
-    public Pessoa register(PessoaDTO pessoaDTO) throws EmailExistsException {
+    public Pessoa register(PessoaDTO pessoaDTO) throws PessoaEmailException {
         if (pessoaRepository.existsPessoaByEmail(pessoaDTO.email())) {
-            throw new EmailExistsException("Email já cadastrado!");
+            throw new PessoaEmailException();
         }
         String encryptedPassword = new BCryptPasswordEncoder().encode(pessoaDTO.senha());
 
@@ -46,7 +46,7 @@ public class PessoaService {
     public boolean deletePessoa(int id_pessoa) {
         Optional<Pessoa> pessoa_id = pessoaRepository.findById(id_pessoa);
         if (pessoa_id.isEmpty()) {
-           throw new PessoaException("Usuário em questão não existe. Favor cadastrar!");
+            throw new PessoaNotFoundException();
         }
         pessoaRepository.deleteById(id_pessoa);
         return true;
