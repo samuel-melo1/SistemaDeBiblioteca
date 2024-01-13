@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadebiblioteca.config.microservice.config;
+package com.biblioteca.sistemadebiblioteca.microservice.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;

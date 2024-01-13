@@ -1,7 +1,7 @@
 package com.biblioteca.sistemadebiblioteca.config.infra.handler;
 
-import com.biblioteca.sistemadebiblioteca.config.exceptions.categoriaException.CategoriaExistException;
-import com.biblioteca.sistemadebiblioteca.config.exceptions.categoriaException.CategoriaNotFoundException;
+import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.categoriaException.CategoriaExistException;
+import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.categoriaException.CategoriaNotFoundException;
 import com.biblioteca.sistemadebiblioteca.config.infra.responsehandler.RestErrorMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

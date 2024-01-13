@@ -1,10 +1,10 @@
 package com.biblioteca.sistemadebiblioteca.domain.service;
 
-import com.biblioteca.sistemadebiblioteca.config.exceptions.categoriaException.CategoriaExistException;
+import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.categoriaException.CategoriaExistException;
 import com.biblioteca.sistemadebiblioteca.domain.model.entity.Categoria;
 import com.biblioteca.sistemadebiblioteca.domain.model.dto.CategoriaDTO;
 import com.biblioteca.sistemadebiblioteca.config.db.repository.CategoriaRepository;
-import com.biblioteca.sistemadebiblioteca.config.exceptions.categoriaException.CategoriaNotFoundException;
+import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.categoriaException.CategoriaNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

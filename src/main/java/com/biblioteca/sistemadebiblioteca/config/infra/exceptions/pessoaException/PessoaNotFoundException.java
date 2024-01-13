@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadebiblioteca.config.exceptions.pessoaException;
+package com.biblioteca.sistemadebiblioteca.config.infra.exceptions.pessoaException;
 
 public class PessoaNotFoundException extends RuntimeException{
 

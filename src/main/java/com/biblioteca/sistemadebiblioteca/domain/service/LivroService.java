@@ -1,8 +1,8 @@
 package com.biblioteca.sistemadebiblioteca.domain.service;
 
-import com.biblioteca.sistemadebiblioteca.config.exceptions.livroException.LivroNotFoundException;
+import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.livroException.LivroNotFoundException;
 import com.biblioteca.sistemadebiblioteca.domain.model.dto.LivroDTO;
-import com.biblioteca.sistemadebiblioteca.config.exceptions.livroException.LivroExistsException;
+import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.livroException.LivroExistsException;
 import com.biblioteca.sistemadebiblioteca.domain.model.entity.Livro;
 import com.biblioteca.sistemadebiblioteca.config.db.repository.LivroRepository;
 import jakarta.transaction.Transactional;

@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadebiblioteca.config.exceptions.livroException;
+package com.biblioteca.sistemadebiblioteca.config.infra.exceptions.livroException;
 
 public class LivroNotFoundException extends RuntimeException{
 
@@ -7,6 +7,6 @@ public class LivroNotFoundException extends RuntimeException{
     }
 
     public LivroNotFoundException(){
-        super("Livro em questão não está em disponivel!");
+        super("Livro não encontrado!");
     }
 }

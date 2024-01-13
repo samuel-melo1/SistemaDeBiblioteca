@@ -1,7 +1,7 @@
 package com.biblioteca.sistemadebiblioteca.config.infra.handler;
 
-import com.biblioteca.sistemadebiblioteca.config.exceptions.pessoaException.PessoaEmailException;
-import com.biblioteca.sistemadebiblioteca.config.exceptions.pessoaException.PessoaNotFoundException;
+import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.pessoaException.PessoaEmailException;
+import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.pessoaException.PessoaNotFoundException;
 import com.biblioteca.sistemadebiblioteca.config.infra.responsehandler.RestErrorMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

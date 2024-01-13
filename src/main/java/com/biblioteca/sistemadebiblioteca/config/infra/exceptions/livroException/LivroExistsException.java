@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadebiblioteca.config.exceptions.livroException;
+package com.biblioteca.sistemadebiblioteca.config.infra.exceptions.livroException;
 
 public class LivroExistsException extends RuntimeException{
 

@@ -2,7 +2,6 @@ package com.biblioteca.sistemadebiblioteca.domain.controller;
 
 import com.biblioteca.sistemadebiblioteca.domain.model.entity.Emprestimo;
 import com.biblioteca.sistemadebiblioteca.domain.model.dto.EmprestimoDTO;
-import com.biblioteca.sistemadebiblioteca.config.exceptions.emprestimoException.EmprestimoException;
 import com.biblioteca.sistemadebiblioteca.domain.service.EmprestimoService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
@@ -18,20 +17,15 @@ public class EmprestimoController {
 
     private EmprestimoService emprestimo;
 
-    public EmprestimoController(EmprestimoService emprestimo){
+    public EmprestimoController(EmprestimoService emprestimo) {
         this.emprestimo = emprestimo;
     }
 
     @PostMapping("/emprestar")
-    public ResponseEntity<Emprestimo> emprestar(@RequestBody EmprestimoDTO emprestimoDTO){
+    public ResponseEntity<Emprestimo> emprestar(@RequestBody EmprestimoDTO emprestimoDTO) {
         var emprestimo = new Emprestimo();
         BeanUtils.copyProperties(emprestimoDTO, emprestimo);
-        try {
-            this.emprestimo.emprestar(emprestimo);
-            return new ResponseEntity(emprestimoDTO, HttpStatus.OK);
-
-        }catch (EmprestimoException exception){
-            return new ResponseEntity(exception.getMessage(), HttpStatus.BAD_REQUEST);
-        }
+        this.emprestimo.emprestar(emprestimo);
+        return new ResponseEntity(emprestimoDTO, HttpStatus.OK);
     }
 }

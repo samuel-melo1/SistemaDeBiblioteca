@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadebiblioteca.config.exceptions.categoriaException;
+package com.biblioteca.sistemadebiblioteca.config.infra.exceptions.categoriaException;
 
 public class CategoriaNotFoundException extends  RuntimeException{
 

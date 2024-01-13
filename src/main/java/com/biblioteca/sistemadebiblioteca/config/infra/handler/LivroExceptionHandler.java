@@ -1,7 +1,8 @@
 package com.biblioteca.sistemadebiblioteca.config.infra.handler;
 
-import com.biblioteca.sistemadebiblioteca.config.exceptions.livroException.LivroExistsException;
-import com.biblioteca.sistemadebiblioteca.config.exceptions.livroException.LivroNotFoundException;
+import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.livroException.LivroEmprestadoException;
+import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.livroException.LivroExistsException;
+import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.livroException.LivroNotFoundException;
 import com.biblioteca.sistemadebiblioteca.config.infra.responsehandler.RestErrorMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,12 @@ public class LivroExceptionHandler {
 
     @ExceptionHandler(LivroExistsException.class)
     public ResponseEntity<RestErrorMessage> livroExistsException(LivroExistsException exception){
+        RestErrorMessage restErrorMessage = new RestErrorMessage(HttpStatus.CONFLICT, exception.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(restErrorMessage);
+    }
+
+    @ExceptionHandler(LivroEmprestadoException.class)
+    public ResponseEntity<RestErrorMessage> livroExistsException(LivroEmprestadoException exception){
         RestErrorMessage restErrorMessage = new RestErrorMessage(HttpStatus.CONFLICT, exception.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(restErrorMessage);
     }

@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadebiblioteca.config.microservice.config.producers;
+package com.biblioteca.sistemadebiblioteca.microservice.config.producers;
 
 import com.biblioteca.sistemadebiblioteca.domain.model.entity.Emprestimo;
 import com.biblioteca.sistemadebiblioteca.domain.model.dto.EmailDTO;

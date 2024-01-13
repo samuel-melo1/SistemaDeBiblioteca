@@ -2,7 +2,6 @@ package com.biblioteca.sistemadebiblioteca.domain.controller;
 
 import com.biblioteca.sistemadebiblioteca.domain.model.dto.LivroDTO;
 import com.biblioteca.sistemadebiblioteca.domain.model.entity.Livro;
-import com.biblioteca.sistemadebiblioteca.config.exceptions.livroException.LivroExistsException;
 import com.biblioteca.sistemadebiblioteca.domain.service.LivroService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
