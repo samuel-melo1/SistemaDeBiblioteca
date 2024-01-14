@@ -38,6 +38,4 @@ public class EmprestimoService {
         emprestimoProducer.publishedMessageEmail(newEmprestimo);
         return repository.save(newEmprestimo);
     }
-
-
 }
