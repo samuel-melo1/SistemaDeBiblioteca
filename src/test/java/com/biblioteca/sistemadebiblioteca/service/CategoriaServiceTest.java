@@ -4,17 +4,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PessoaServiceTest {
+class CategoriaServiceTest {
 
     @Test
-    void register() {
+    void create() {
     }
 
     @Test
-    void getAll() {
-    }
-
-    @Test
-    void deletePessoa() {
+    void getCategorias() {
     }
 }
