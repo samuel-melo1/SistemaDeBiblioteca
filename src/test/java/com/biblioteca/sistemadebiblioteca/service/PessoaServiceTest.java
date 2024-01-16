@@ -1,20 +1,81 @@
 package com.biblioteca.sistemadebiblioteca.service;
 
+import com.biblioteca.sistemadebiblioteca.config.db.repository.PessoaRepository;
+import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.pessoaException.PessoaEmailException;
+import com.biblioteca.sistemadebiblioteca.domain.model.Enums.PessoaRole;
+import com.biblioteca.sistemadebiblioteca.domain.model.dto.PessoaDTO;
+import com.biblioteca.sistemadebiblioteca.domain.model.entity.Pessoa;
+import com.biblioteca.sistemadebiblioteca.domain.service.PessoaService;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.time.LocalDate;
+import java.util.Collections;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 class PessoaServiceTest {
 
-    @Test
-    void register() {
+    @Mock
+    private PessoaRepository pessoaRepository;
+
+    @InjectMocks
+    private PessoaService pessoaService;
+
+    @BeforeEach
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
     }
 
     @Test
-    void getAll() {
+    @DisplayName("Should successfully register a new person")
+    void registerPersonExceptionFalse() {
+
+        PessoaDTO pessoaDTO = new PessoaDTO("Samuel", "12256131912",
+                LocalDate.of(2004, 12, 20),
+                "samuel@gmail.com",
+                "senha123",
+                PessoaRole.ADMIN,
+                "Criciúma");
+
+        when(pessoaRepository.existsPessoaByEmail(pessoaDTO.email())).thenReturn(false);
+
+        PessoaDTO newPessoa = new PessoaDTO(pessoaDTO.nome(), pessoaDTO.cpf(), pessoaDTO.data_nascimento(),
+                pessoaDTO.email(), pessoaDTO.senha(), pessoaDTO.role(), pessoaDTO.endereco());
+        this.pessoaService.register(newPessoa);
+
+        verify(pessoaRepository, times(1)).save(any());
     }
 
     @Test
-    void deletePessoa() {
+    @DisplayName("Should throw Exception when Person is exist")
+    public void registerPersonExceptionTrue() {
+
+        PessoaDTO pessoaDTO = new PessoaDTO("Samuel", "12256131912",
+                LocalDate.of(2004, 12, 20),
+                "samuel@gmail.com",
+                "senha123",
+                PessoaRole.ADMIN,
+                "Criciúma");
+
+        when(pessoaRepository.existsPessoaByEmail(pessoaDTO.email())).thenReturn(true);
+        Exception thrown = Assertions.assertThrows(PessoaEmailException.class, () -> {
+            PessoaDTO newPessoa = new PessoaDTO(pessoaDTO.nome(), pessoaDTO.cpf(), pessoaDTO.data_nascimento(),
+                    pessoaDTO.email(), pessoaDTO.senha(), pessoaDTO.role(), pessoaDTO.endereco());
+            this.pessoaService.register(newPessoa);
+        });
+        Assertions.assertEquals("Email já cadastrado!", thrown.getMessage());
+
     }
+
+
 }

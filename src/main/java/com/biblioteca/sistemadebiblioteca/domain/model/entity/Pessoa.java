@@ -14,7 +14,7 @@ import java.util.List;
 
 @Entity
 @Data
-@NoArgsConstructor
+
 @AllArgsConstructor
 public class Pessoa implements UserDetails {
 
@@ -43,6 +43,14 @@ public class Pessoa implements UserDetails {
         this.senha = senha;
         this.email = email;
     }
+    public Pessoa(){
+
+    }
+
+    public Pessoa(Integer id_pessoa, String nome, String cpf, LocalDate data_nascimento, String endereco,
+                  String email, String senha, PessoaRole pessoaRole) {
+    }
+
     @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
