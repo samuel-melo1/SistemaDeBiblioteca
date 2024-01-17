@@ -17,10 +17,18 @@ public class PessoaExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(restErrorMessage);
     }
 
+    @ExceptionHandler(NullPointerException.class)
+    private ResponseEntity<RestErrorMessage> pessoaNotFoundHandler(NullPointerException exception){
+        RestErrorMessage restErrorMessage = new RestErrorMessage(HttpStatus.NOT_FOUND, exception.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(restErrorMessage);
+    }
+
     @ExceptionHandler(PessoaEmailException.class)
     private ResponseEntity<RestErrorMessage> pessoaExistsEmailHandler(PessoaEmailException exception){
         RestErrorMessage restErrorMessage = new RestErrorMessage(HttpStatus.CONFLICT, exception.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(restErrorMessage);
     }
+
+
 
 }
