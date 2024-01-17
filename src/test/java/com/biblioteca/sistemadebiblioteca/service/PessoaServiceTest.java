@@ -83,27 +83,28 @@ class PessoaServiceTest {
     @DisplayName("Should successfully delete a person")
     void deletePessoaWhenPersonIsFounded() {
 
-        Pessoa pessoa = new Pessoa(1, "Samuel", "12256131912", LocalDate.of(2004, 12, 20),
+        Pessoa pessoa = new Pessoa(2, "Samuel", "12256131912", LocalDate.of(2004, 12, 20),
                 "Criciúma",
                 "samuel@gmail.com",
                 "senha123",
                 PessoaRole.ADMIN
         );
 
-        when(pessoaRepository.findById(pessoa.getId_pessoa())).thenReturn(Optional.of(pessoa));
-        this.pessoaRepository.deleteById(pessoa.getId_pessoa());
+        when(pessoaRepository.findById(2)).thenReturn(Optional.of(pessoa));
+         boolean result = this.pessoaService.deletePessoa(2);
 
         verify(pessoaRepository, times(1)).deleteById(any());
+        Assertions.assertTrue(result);
     }
 
     @Test
     @DisplayName("Should throw Exception when Person is not exist")
     void deletePessoaWhenPersonIsNotFounded() {
 
-        Optional<Pessoa> pessoa = pessoaRepository.findById(1);
-        Assertions.assertEquals(pessoa, Optional.empty());
+        when(pessoaRepository.findById(2)).thenReturn(Optional.empty());
+
         Exception thrown = Assertions.assertThrows(PessoaNotFoundException.class, () -> {
-            this.pessoaService.deletePessoa(1);
+            this.pessoaService.deletePessoa(2);
         });
 
         Assertions.assertEquals("Not found Users!", thrown.getMessage());
