@@ -1,6 +1,6 @@
 package com.biblioteca.sistemadebiblioteca.domain.service;
 
-import com.biblioteca.sistemadebiblioteca.config.db.repository.PessoaRepository;
+import com.biblioteca.sistemadebiblioteca.domain.repository.PessoaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

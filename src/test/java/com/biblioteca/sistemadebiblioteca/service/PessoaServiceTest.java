@@ -1,11 +1,11 @@
 package com.biblioteca.sistemadebiblioteca.service;
 
-import com.biblioteca.sistemadebiblioteca.config.db.repository.PessoaRepository;
+import com.biblioteca.sistemadebiblioteca.domain.repository.PessoaRepository;
 import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.pessoaException.PessoaEmailException;
 import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.pessoaException.PessoaNotFoundException;
-import com.biblioteca.sistemadebiblioteca.domain.model.Enums.PessoaRole;
-import com.biblioteca.sistemadebiblioteca.domain.model.dto.PessoaDTO;
-import com.biblioteca.sistemadebiblioteca.domain.model.entity.Pessoa;
+import com.biblioteca.sistemadebiblioteca.domain.Enums.PessoaRole;
+import com.biblioteca.sistemadebiblioteca.domain.dto.PessoaDTO;
+import com.biblioteca.sistemadebiblioteca.domain.model.Pessoa;
 import com.biblioteca.sistemadebiblioteca.domain.service.PessoaService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,11 +14,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
-import java.util.Collections;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

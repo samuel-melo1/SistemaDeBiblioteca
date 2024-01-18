@@ -1,7 +1,7 @@
 package com.biblioteca.sistemadebiblioteca.microservice.config.producers;
 
-import com.biblioteca.sistemadebiblioteca.domain.model.entity.Emprestimo;
-import com.biblioteca.sistemadebiblioteca.domain.model.dto.EmailDTO;
+import com.biblioteca.sistemadebiblioteca.domain.model.Emprestimo;
+import com.biblioteca.sistemadebiblioteca.domain.dto.EmailDTO;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

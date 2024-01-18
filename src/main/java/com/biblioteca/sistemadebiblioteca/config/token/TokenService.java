@@ -3,7 +3,7 @@ package com.biblioteca.sistemadebiblioteca.config.token;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
-import com.biblioteca.sistemadebiblioteca.domain.model.entity.Pessoa;
+import com.biblioteca.sistemadebiblioteca.domain.model.Pessoa;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

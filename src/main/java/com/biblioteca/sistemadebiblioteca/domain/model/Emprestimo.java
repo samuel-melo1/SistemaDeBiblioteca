@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadebiblioteca.domain.model.entity;
+package com.biblioteca.sistemadebiblioteca.domain.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

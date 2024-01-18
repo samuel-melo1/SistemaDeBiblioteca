@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadebiblioteca.domain.model.dto;
+package com.biblioteca.sistemadebiblioteca.domain.dto;
 
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;

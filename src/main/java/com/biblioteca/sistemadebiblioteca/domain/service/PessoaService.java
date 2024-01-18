@@ -1,8 +1,8 @@
 package com.biblioteca.sistemadebiblioteca.domain.service;
 
-import com.biblioteca.sistemadebiblioteca.domain.model.entity.Pessoa;
-import com.biblioteca.sistemadebiblioteca.domain.model.dto.PessoaDTO;
-import com.biblioteca.sistemadebiblioteca.config.db.repository.PessoaRepository;
+import com.biblioteca.sistemadebiblioteca.domain.model.Pessoa;
+import com.biblioteca.sistemadebiblioteca.domain.dto.PessoaDTO;
+import com.biblioteca.sistemadebiblioteca.domain.repository.PessoaRepository;
 import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.pessoaException.PessoaEmailException;
 import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.pessoaException.PessoaNotFoundException;
 import jakarta.transaction.Transactional;

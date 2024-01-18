@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadebiblioteca.domain.model.entity;
+package com.biblioteca.sistemadebiblioteca.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

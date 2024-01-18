@@ -1,6 +1,6 @@
-package com.biblioteca.sistemadebiblioteca.domain.model.dto;
+package com.biblioteca.sistemadebiblioteca.domain.dto;
 
-import com.biblioteca.sistemadebiblioteca.domain.model.Enums.PessoaRole;
+import com.biblioteca.sistemadebiblioteca.domain.Enums.PessoaRole;
 
 import java.time.LocalDate;
 

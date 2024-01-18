@@ -1,7 +1,7 @@
 package com.biblioteca.sistemadebiblioteca.domain.controller;
 
-import com.biblioteca.sistemadebiblioteca.domain.model.dto.CategoriaDTO;
-import com.biblioteca.sistemadebiblioteca.domain.model.entity.Categoria;
+import com.biblioteca.sistemadebiblioteca.domain.dto.CategoriaDTO;
+import com.biblioteca.sistemadebiblioteca.domain.model.Categoria;
 import com.biblioteca.sistemadebiblioteca.domain.service.CategoriaService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;

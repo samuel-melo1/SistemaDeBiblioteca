@@ -3,11 +3,11 @@ package com.biblioteca.sistemadebiblioteca.domain.service;
 
 import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.livroException.LivroEmprestadoException;
 import com.biblioteca.sistemadebiblioteca.microservice.config.producers.EmprestimoProducer;
-import com.biblioteca.sistemadebiblioteca.domain.model.Enums.LivroEnum;
-import com.biblioteca.sistemadebiblioteca.domain.model.entity.Emprestimo;
-import com.biblioteca.sistemadebiblioteca.domain.model.entity.Livro;
-import com.biblioteca.sistemadebiblioteca.config.db.repository.EmprestimoRepository;
-import com.biblioteca.sistemadebiblioteca.config.db.repository.LivroRepository;
+import com.biblioteca.sistemadebiblioteca.domain.Enums.LivroEnum;
+import com.biblioteca.sistemadebiblioteca.domain.model.Emprestimo;
+import com.biblioteca.sistemadebiblioteca.domain.model.Livro;
+import com.biblioteca.sistemadebiblioteca.domain.repository.EmprestimoRepository;
+import com.biblioteca.sistemadebiblioteca.domain.repository.LivroRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

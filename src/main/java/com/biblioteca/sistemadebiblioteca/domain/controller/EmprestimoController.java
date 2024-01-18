@@ -1,7 +1,7 @@
 package com.biblioteca.sistemadebiblioteca.domain.controller;
 
-import com.biblioteca.sistemadebiblioteca.domain.model.entity.Emprestimo;
-import com.biblioteca.sistemadebiblioteca.domain.model.dto.EmprestimoDTO;
+import com.biblioteca.sistemadebiblioteca.domain.model.Emprestimo;
+import com.biblioteca.sistemadebiblioteca.domain.dto.EmprestimoDTO;
 import com.biblioteca.sistemadebiblioteca.domain.service.EmprestimoService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;

@@ -1,6 +1,6 @@
-package com.biblioteca.sistemadebiblioteca.domain.model.entity;
+package com.biblioteca.sistemadebiblioteca.domain.model;
 
-import com.biblioteca.sistemadebiblioteca.domain.model.Enums.LivroEnum;
+import com.biblioteca.sistemadebiblioteca.domain.Enums.LivroEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
