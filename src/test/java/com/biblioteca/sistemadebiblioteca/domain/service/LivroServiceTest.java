@@ -2,17 +2,14 @@ package com.biblioteca.sistemadebiblioteca.domain.service;
 
 import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.livroException.LivroExistsException;
 import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.livroException.LivroNotFoundException;
-import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.pessoaException.PessoaEmailException;
 import com.biblioteca.sistemadebiblioteca.domain.Enums.LivroEnum;
 import com.biblioteca.sistemadebiblioteca.domain.Enums.PessoaRole;
 import com.biblioteca.sistemadebiblioteca.domain.dto.LivroDTO;
-import com.biblioteca.sistemadebiblioteca.domain.dto.PessoaDTO;
 import com.biblioteca.sistemadebiblioteca.domain.model.Categoria;
 import com.biblioteca.sistemadebiblioteca.domain.model.Emprestimo;
 import com.biblioteca.sistemadebiblioteca.domain.model.Livro;
 import com.biblioteca.sistemadebiblioteca.domain.model.Pessoa;
-import com.biblioteca.sistemadebiblioteca.domain.repository.LivroRepository;
-import com.biblioteca.sistemadebiblioteca.domain.service.LivroService;
+import com.biblioteca.sistemadebiblioteca.repository.LivroRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -27,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 

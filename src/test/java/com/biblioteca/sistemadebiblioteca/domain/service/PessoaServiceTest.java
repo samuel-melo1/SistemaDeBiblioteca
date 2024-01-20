@@ -1,12 +1,11 @@
 package com.biblioteca.sistemadebiblioteca.domain.service;
 
-import com.biblioteca.sistemadebiblioteca.domain.repository.PessoaRepository;
+import com.biblioteca.sistemadebiblioteca.repository.PessoaRepository;
 import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.pessoaException.PessoaEmailException;
 import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.pessoaException.PessoaNotFoundException;
 import com.biblioteca.sistemadebiblioteca.domain.Enums.PessoaRole;
 import com.biblioteca.sistemadebiblioteca.domain.dto.PessoaDTO;
 import com.biblioteca.sistemadebiblioteca.domain.model.Pessoa;
-import com.biblioteca.sistemadebiblioteca.domain.service.PessoaService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

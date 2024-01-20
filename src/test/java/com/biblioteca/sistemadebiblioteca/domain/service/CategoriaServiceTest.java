@@ -1,11 +1,8 @@
 package com.biblioteca.sistemadebiblioteca.domain.service;
 
 import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.categoriaException.CategoriaExistException;
-import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.categoriaException.CategoriaNotFoundException;
 import com.biblioteca.sistemadebiblioteca.domain.dto.CategoriaDTO;
-import com.biblioteca.sistemadebiblioteca.domain.model.Categoria;
-import com.biblioteca.sistemadebiblioteca.domain.repository.CategoriaRepository;
-import com.biblioteca.sistemadebiblioteca.domain.service.CategoriaService;
+import com.biblioteca.sistemadebiblioteca.repository.CategoriaRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -15,7 +12,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 

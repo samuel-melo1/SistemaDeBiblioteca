@@ -1,6 +1,6 @@
 package com.biblioteca.sistemadebiblioteca.config.token;
 
-import com.biblioteca.sistemadebiblioteca.domain.repository.PessoaRepository;
+import com.biblioteca.sistemadebiblioteca.repository.PessoaRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

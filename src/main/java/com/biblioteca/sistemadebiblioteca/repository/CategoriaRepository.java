@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadebiblioteca.domain.repository;
+package com.biblioteca.sistemadebiblioteca.repository;
 
 import com.biblioteca.sistemadebiblioteca.domain.model.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;

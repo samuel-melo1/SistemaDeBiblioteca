@@ -6,8 +6,8 @@ import com.biblioteca.sistemadebiblioteca.microservice.config.producers.Empresti
 import com.biblioteca.sistemadebiblioteca.domain.Enums.LivroEnum;
 import com.biblioteca.sistemadebiblioteca.domain.model.Emprestimo;
 import com.biblioteca.sistemadebiblioteca.domain.model.Livro;
-import com.biblioteca.sistemadebiblioteca.domain.repository.EmprestimoRepository;
-import com.biblioteca.sistemadebiblioteca.domain.repository.LivroRepository;
+import com.biblioteca.sistemadebiblioteca.repository.EmprestimoRepository;
+import com.biblioteca.sistemadebiblioteca.repository.LivroRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

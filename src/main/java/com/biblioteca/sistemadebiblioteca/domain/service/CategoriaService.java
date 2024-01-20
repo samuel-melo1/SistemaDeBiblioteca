@@ -3,7 +3,7 @@ package com.biblioteca.sistemadebiblioteca.domain.service;
 import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.categoriaException.CategoriaExistException;
 import com.biblioteca.sistemadebiblioteca.domain.model.Categoria;
 import com.biblioteca.sistemadebiblioteca.domain.dto.CategoriaDTO;
-import com.biblioteca.sistemadebiblioteca.domain.repository.CategoriaRepository;
+import com.biblioteca.sistemadebiblioteca.repository.CategoriaRepository;
 import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.categoriaException.CategoriaNotFoundException;
 import org.springframework.stereotype.Service;
 
