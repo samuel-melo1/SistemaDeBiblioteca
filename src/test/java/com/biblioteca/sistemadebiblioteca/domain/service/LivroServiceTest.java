@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadebiblioteca.service;
+package com.biblioteca.sistemadebiblioteca.domain.service;
 
 import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.livroException.LivroExistsException;
 import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.livroException.LivroNotFoundException;
@@ -81,7 +81,7 @@ class LivroServiceTest {
                 new Categoria("Romance", "Narrativas centradas em relacionamentos amorosos"), LivroEnum.DISPONIVEL);
 
         Emprestimo emprestimo = new Emprestimo(LocalDate.now(), LocalDate.now().plusDays(7),
-                new Pessoa(2, "Samuel", "12256131912", LocalDate.of(2004, 12, 20),
+                new Pessoa(2, "Samuel", "12254423112", LocalDate.of(2004, 12, 20),
                         "Criciúma",
                         "samuel@gmail.com",
                         "senha123",

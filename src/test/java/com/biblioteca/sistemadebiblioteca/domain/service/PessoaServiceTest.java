@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadebiblioteca.service;
+package com.biblioteca.sistemadebiblioteca.domain.service;
 
 import com.biblioteca.sistemadebiblioteca.domain.repository.PessoaRepository;
 import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.pessoaException.PessoaEmailException;
