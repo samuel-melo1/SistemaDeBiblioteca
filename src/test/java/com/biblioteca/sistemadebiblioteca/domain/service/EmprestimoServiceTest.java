@@ -1,5 +1,6 @@
 package com.biblioteca.sistemadebiblioteca.domain.service;
 
+import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.livroException.LivroEmprestadoException;
 import com.biblioteca.sistemadebiblioteca.domain.Enums.LivroEnum;
 import com.biblioteca.sistemadebiblioteca.domain.Enums.PessoaRole;
 import com.biblioteca.sistemadebiblioteca.domain.model.Categoria;
@@ -48,16 +49,13 @@ class EmprestimoServiceTest {
     }
 
     @Test
-    @DisplayName("Should successfully borrow a boook")
-    void emprestarWithoutException() {
+    @DisplayName("Should successfully borrow a book")
+    void borrowABookWhenExceptionFalse() {
         List<Emprestimo> listEmprestimo = new ArrayList<>();
         Livro livro = new Livro(2, "Percy Jackson", listEmprestimo,
                 new Categoria("Romance", "Narrativas centradas em relacionamentos amorosos"), LivroEnum.DISPONIVEL);
 
         Mockito.when(livroRepository.findLivroByTitulo(livro.getTitulo())).thenReturn(livro);
-
-        boolean result = livro.getStatus() == LivroEnum.EMPRESTADO;
-        Assertions.assertFalse(result);
 
         Emprestimo emprestimo = new Emprestimo(LocalDate.now(), LocalDate.now().plusDays(7),
                 new Pessoa(2, "Samuel", "12256131912", LocalDate.of(2004, 12, 20),
@@ -67,10 +65,38 @@ class EmprestimoServiceTest {
                         PessoaRole.ADMIN
                 ), livro);
 
-        emprestimoService.emprestar(emprestimo)
+        emprestimoService.emprestar(emprestimo);
 
         verify(livroRepository, times(1)).save(any());
+        verify(emprestimoProducer, times(1)).publishedMessageEmail(Mockito.any());
+        assertEquals(livro.getStatus(), LivroEnum.EMPRESTADO);
 
+    }
+
+    @Test
+    @DisplayName("Should Exception when borrow a book")
+    void borrowABookWhenExceptionTrue() {
+
+        List<Emprestimo> listEmprestimo = new ArrayList<>();
+        Livro livro = new Livro(2, "Percy Jackson", listEmprestimo,
+                new Categoria("Romance", "Narrativas centradas em relacionamentos amorosos"), LivroEnum.EMPRESTADO);
+
+        Mockito.when(livroRepository.findLivroByTitulo(livro.getTitulo())).thenReturn(livro);
+
+        Exception thrown = Assertions.assertThrows(LivroEmprestadoException.class, () -> {
+            Emprestimo emprestimo = new Emprestimo(LocalDate.now(), LocalDate.now().plusDays(7),
+                    new Pessoa(2, "Samuel", "12256131912", LocalDate.of(2004, 12, 20),
+                            "Criciúma",
+                            "samuel@gmail.com",
+                            "senha123",
+                            PessoaRole.ADMIN
+                    ), livro);
+
+            emprestimoService.emprestar(emprestimo);
+        });
+
+        Assertions.assertEquals("Livro está emprestado!", thrown.getMessage());
+        assertEquals(livro.getStatus(), LivroEnum.EMPRESTADO);
 
     }
 }
