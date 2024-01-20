@@ -1,9 +1,12 @@
-package com.biblioteca.sistemadebiblioteca.service;
+package com.biblioteca.sistemadebiblioteca.domain.service;
 
+import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.categoriaException.CategoriaExistException;
+import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.categoriaException.CategoriaNotFoundException;
 import com.biblioteca.sistemadebiblioteca.domain.dto.CategoriaDTO;
 import com.biblioteca.sistemadebiblioteca.domain.model.Categoria;
 import com.biblioteca.sistemadebiblioteca.domain.repository.CategoriaRepository;
 import com.biblioteca.sistemadebiblioteca.domain.service.CategoriaService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -39,10 +42,22 @@ class CategoriaServiceTest {
         this.categoriaService.create(categoriaDTO);
 
         verify(categoriaRepository, times(1)).save(any());
-
     }
 
     @Test
-    void getCategorias() {
+    @DisplayName("Should Exception when register a new categoria")
+    void createCategoriaWhenExceptionTrue(){
+
+        CategoriaDTO categoriaDTO = new CategoriaDTO("Romance", "Narrativas centradas em relacionamentos amorosos");
+
+        Mockito.when(categoriaRepository.existsCategoriaByNome(categoriaDTO.nome())).thenReturn(true);
+
+        Exception thrown = Assertions.assertThrows(CategoriaExistException.class, () -> {
+            this.categoriaService.create(categoriaDTO);
+        });
+
+        Assertions.assertEquals("Categoria já existe!", thrown.getMessage());
     }
+
+
 }

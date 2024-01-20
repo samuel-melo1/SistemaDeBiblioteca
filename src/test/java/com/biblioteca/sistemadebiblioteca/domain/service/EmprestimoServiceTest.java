@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadebiblioteca.service;
+package com.biblioteca.sistemadebiblioteca.domain.service;
 
 import com.biblioteca.sistemadebiblioteca.domain.Enums.LivroEnum;
 import com.biblioteca.sistemadebiblioteca.domain.Enums.PessoaRole;
@@ -54,7 +54,6 @@ class EmprestimoServiceTest {
         Livro livro = new Livro(2, "Percy Jackson", listEmprestimo,
                 new Categoria("Romance", "Narrativas centradas em relacionamentos amorosos"), LivroEnum.DISPONIVEL);
 
-
         Mockito.when(livroRepository.findLivroByTitulo(livro.getTitulo())).thenReturn(livro);
 
         boolean result = livro.getStatus() == LivroEnum.EMPRESTADO;
@@ -67,6 +66,11 @@ class EmprestimoServiceTest {
                         "senha123",
                         PessoaRole.ADMIN
                 ), livro);
+
+        emprestimoService.emprestar(emprestimo)
+
+        verify(livroRepository, times(1)).save(any());
+
 
     }
 }
