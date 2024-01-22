@@ -33,8 +33,9 @@ public class EmprestimoService {
             throw new LivroEmprestadoException();
         }
         Emprestimo newEmprestimo = new Emprestimo(LocalDate.now(), LocalDate.now().plusDays(7), emprestimo.getPessoa(), livro);
-        livro.setStatus(LivroEnum.EMPRESTADO);
-        livroRepository.save(livro);
+        service.updateStatusBook(livro.getId_livro());
+//        livro.setStatus(LivroEnum.EMPRESTADO);
+//        livroRepository.save(livro);
         emprestimoProducer.publishedMessageEmail(newEmprestimo);
         return repository.save(newEmprestimo);
     }
