@@ -38,4 +38,9 @@ public class LivroController {
         return ResponseEntity.ok().build();
 
     }
+    @PatchMapping("/updateBook/{id_book}")
+    public ResponseEntity updateBook(@PathVariable("id_book") int id_book){
+        this.service.updateStatusBook(id_book);
+        return ResponseEntity.ok().build();
+    }
 }
