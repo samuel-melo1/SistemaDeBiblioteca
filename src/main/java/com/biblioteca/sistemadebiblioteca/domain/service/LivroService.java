@@ -46,12 +46,13 @@ public class LivroService {
         return true;
     }
 
-    public Livro updateStatusBook(Integer id) {
+    public Livro updateStatusBook(int id) {
         Livro livro = this.repository.findById(id)
                 .orElseThrow(LivroNotFoundException::new);
 
-        if(livro.getStatus() != null) livro.setStatus(LivroEnum.EMPRESTADO);
-
+        if (livro.getStatus() != LivroEnum.EMPRESTADO){
+            livro.setStatus(LivroEnum.EMPRESTADO);
+        }
         this.repository.save(livro);
         return livro;
     }
