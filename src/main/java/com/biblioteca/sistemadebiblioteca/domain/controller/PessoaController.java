@@ -4,6 +4,7 @@ import com.biblioteca.sistemadebiblioteca.domain.dto.PessoaDTO;
 import com.biblioteca.sistemadebiblioteca.domain.model.Pessoa;
 import com.biblioteca.sistemadebiblioteca.domain.service.PessoaService;
 import jakarta.validation.Valid;
+import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +23,7 @@ public class PessoaController {
 
     @PostMapping("/register")
     public ResponseEntity create(@RequestBody @Valid PessoaDTO pessoaDTO) {
-        this.pessoaService.register(pessoaDTO);
-        return ResponseEntity.ok().build();
+        return new ResponseEntity<>( this.pessoaService.register(pessoaDTO), HttpStatus.OK);
     }
 
     @GetMapping("/listUsers")
@@ -37,4 +37,5 @@ public class PessoaController {
         boolean deletePessoa = pessoaService.deletePessoa(id);
         return new ResponseEntity(deletePessoa, HttpStatus.OK);
     }
+
 }

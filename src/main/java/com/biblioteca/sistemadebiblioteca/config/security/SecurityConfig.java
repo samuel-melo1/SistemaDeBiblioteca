@@ -34,7 +34,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "api/v1/deleteUsers/{id}").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST,"api/v1/book/createBook").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "api/v1/book/deleteBook/{id}").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST,"/api/v1//createCategoria").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST,"/api/v1/createCategoria").hasRole("ADMIN")
                         .requestMatchers(AUTH_WHITELIST).permitAll()
                         .anyRequest().authenticated()
                 )

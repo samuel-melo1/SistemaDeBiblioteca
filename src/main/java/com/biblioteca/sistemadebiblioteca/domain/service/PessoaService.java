@@ -27,10 +27,7 @@ public class PessoaService {
         }
         String encryptedPassword = new BCryptPasswordEncoder().encode(pessoaDTO.senha());
 
-        Pessoa newUser = new Pessoa(pessoaDTO.nome(),
-                pessoaDTO.cpf(),
-                pessoaDTO.data_nascimento(),
-                pessoaDTO.endereco(),
+        Pessoa newUser = new Pessoa(pessoaDTO.nome(), pessoaDTO.cpf(), pessoaDTO.data_nascimento(), pessoaDTO.endereco(),
                 pessoaDTO.email(),
                 encryptedPassword,
                 pessoaDTO.role());

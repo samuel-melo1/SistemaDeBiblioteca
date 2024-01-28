@@ -7,7 +7,9 @@ import com.biblioteca.sistemadebiblioteca.repository.CategoriaRepository;
 import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.categoriaException.CategoriaNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoriaService {
