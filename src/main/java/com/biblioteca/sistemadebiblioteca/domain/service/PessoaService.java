@@ -41,10 +41,9 @@ public class PessoaService {
 
     @Transactional
     public boolean deletePessoa(int id_pessoa) {
-        Optional<Pessoa> pessoa_id = pessoaRepository.findById(id_pessoa);
-        if (pessoa_id.isEmpty()) {
-            throw new PessoaNotFoundException();
-        }
+        Pessoa pessoa_id = pessoaRepository.findById(id_pessoa)
+                .orElseThrow(PessoaNotFoundException::new);
+
         pessoaRepository.deleteById(id_pessoa);
         return true;
     }

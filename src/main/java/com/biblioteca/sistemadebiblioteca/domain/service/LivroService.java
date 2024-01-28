@@ -17,11 +17,8 @@ import java.util.Optional;
 @Service
 public class LivroService {
     private LivroRepository repository;
-    private CategoriaService categoriaService;
-
-    public LivroService(LivroRepository repository, CategoriaService categoriaService) {
+    public LivroService(LivroRepository repository) {
         this.repository = repository;
-        this.categoriaService = categoriaService;
     }
 
     public Livro createBook(LivroDTO livroDTO) throws LivroExistsException {
@@ -38,22 +35,20 @@ public class LivroService {
 
     @Transactional
     public boolean deleteBook(int id_book) throws LivroExistsException {
-        Optional<Livro> livro_id = repository.findById(id_book);
-        if (livro_id.isEmpty()) {
-            throw new LivroNotFoundException();
-        }
+        Livro livro_id = (repository.findById(id_book)
+                .orElseThrow(LivroNotFoundException::new));
+
         repository.deleteById(id_book);
         return true;
     }
 
     public Livro updateStatusBook(int id) {
-        Livro livro = this.repository.findById(id)
+        Livro livro = repository.findById(id)
                 .orElseThrow(LivroNotFoundException::new);
 
-        if (livro.getStatus() != LivroEnum.EMPRESTADO){
+        if (livro.getStatus() != LivroEnum.EMPRESTADO) {
             livro.setStatus(LivroEnum.EMPRESTADO);
         }
-        this.repository.save(livro);
-        return livro;
+        return repository.save(livro);
     }
 }
