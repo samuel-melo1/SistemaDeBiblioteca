@@ -5,6 +5,7 @@ import com.biblioteca.sistemadebiblioteca.domain.Enums.LivroEnum;
 import com.biblioteca.sistemadebiblioteca.domain.dto.CategoriaDTO;
 import com.biblioteca.sistemadebiblioteca.domain.dto.LivroDTO;
 import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.livroException.LivroExistsException;
+import com.biblioteca.sistemadebiblioteca.domain.interfaces.LivroServiceImpl;
 import com.biblioteca.sistemadebiblioteca.domain.model.Categoria;
 import com.biblioteca.sistemadebiblioteca.domain.model.Livro;
 import com.biblioteca.sistemadebiblioteca.repository.LivroRepository;
@@ -15,12 +16,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class LivroService {
+public class LivroService implements LivroServiceImpl {
     private LivroRepository repository;
     public LivroService(LivroRepository repository) {
         this.repository = repository;
     }
 
+    @Override
     public Livro createBook(LivroDTO livroDTO) throws LivroExistsException {
         if (repository.existsLivroByTitulo(livroDTO.titulo())) {
             throw new LivroExistsException();
@@ -28,11 +30,11 @@ public class LivroService {
         Livro newBook = new Livro(livroDTO.titulo(), livroDTO.categoria());
         return repository.save(newBook);
     }
-
+    @Override
     public List<Livro> getAllBooks() {
         return repository.findAll();
     }
-
+    @Override
     @Transactional
     public boolean deleteBook(int id_book) throws LivroExistsException {
         Livro livro_id = (repository.findById(id_book)
@@ -41,7 +43,6 @@ public class LivroService {
         repository.deleteById(id_book);
         return true;
     }
-
     public Livro updateStatusBook(int id) {
         Livro livro = repository.findById(id)
                 .orElseThrow(LivroNotFoundException::new);
