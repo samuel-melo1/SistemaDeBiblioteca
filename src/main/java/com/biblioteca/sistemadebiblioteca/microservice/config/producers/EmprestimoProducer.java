@@ -30,7 +30,5 @@ public class EmprestimoProducer {
                 "\n");
 
         rabbitTemplate.convertAndSend("", routingKey, emailDto);
-
-
     }
 }

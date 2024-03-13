@@ -10,8 +10,10 @@ import java.util.List;
 
 public interface EmprestimoRepository extends JpaRepository<Emprestimo, Integer> {
 
-    @Query(value = "select emprestimo.* from emprestimo " + "left join livro on (livro.id_livro = emprestimo.id_livro) " + "where livro.status = 1  ", nativeQuery = true)
-    List<Emprestimo> buscarEmprestimo(); //FORMA NATIVA
+    @Query(value = "select emprestimo.* from emprestimo " +
+                    "left join livro on (livro.id_livro = emprestimo.id_livro) " +
+                    "where livro.status = 1  ", nativeQuery = true)
+    List<Emprestimo> buscarEmprestimo();
 
 
 }
