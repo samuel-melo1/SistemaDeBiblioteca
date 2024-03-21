@@ -14,7 +14,7 @@ import java.time.LocalDate;
 
 
 @Service
-public class EmprestimoService {
+public class EmprestimoService  {
 
     private EmprestimoRepository repository;
     private LivroService livroService;
