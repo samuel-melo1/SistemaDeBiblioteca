@@ -20,15 +20,15 @@ public class CategoriaService {
         this.categoriaRepository = categoriaRepository;
     }
 
-    public Categoria create(CategoriaDTO categoriaDTO){
+    public Categoria create(CategoriaDTO categoriaDTO) {
         if (categoriaRepository.existsCategoriaByNome(categoriaDTO.nome())) {
             throw new CategoriaExistException();
         }
-        Categoria newCategoria = new Categoria(categoriaDTO.nome(), categoriaDTO.descricao());
-        return categoriaRepository.save(newCategoria);
+        return categoriaRepository.save(Categoria.builder()
+                .nome(categoriaDTO.nome())
+                .descricao(categoriaDTO.descricao()).build());
     }
-
-    public List<Categoria> getCategorias(){
+    public List<Categoria> getCategorias() {
         if (categoriaRepository.findAll().isEmpty()) {
             throw new CategoriaNotFoundException();
         }
