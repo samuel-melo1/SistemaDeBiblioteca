@@ -1,8 +1,7 @@
 package com.biblioteca.sistemadebiblioteca.microservice.config.producers;
 
-import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.pessoaException.PessoaNotFoundException;
 import com.biblioteca.sistemadebiblioteca.domain.dto.EmailDTO;
-import com.biblioteca.sistemadebiblioteca.domain.interfaces.EmailBodyImpl;
+import com.biblioteca.sistemadebiblioteca.domain.service.serviceImpl.EmailBodyImpl;
 import com.biblioteca.sistemadebiblioteca.domain.model.Emprestimo;
 import com.biblioteca.sistemadebiblioteca.repository.EmprestimoRepository;
 
@@ -12,9 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -33,7 +30,7 @@ public class Scheduling implements EmailBodyImpl {
         this.emprestimoRepository = emprestimoRepository;
         this.rabbitTemplate = rabbitTemplate;
     }
-    @Scheduled(cron = "0 0 6")
+    @Scheduled(cron = "0 00 06 ? * *")
     public void verifyDeadline() {
         List<Emprestimo> listEmprestimo = emprestimoRepository.buscarEmprestimo();
         for (Emprestimo emprestimo : listEmprestimo) {
