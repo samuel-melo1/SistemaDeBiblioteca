@@ -2,18 +2,15 @@ package com.biblioteca.sistemadebiblioteca.domain.service;
 
 import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.livroException.LivroNotFoundException;
 import com.biblioteca.sistemadebiblioteca.domain.Enums.LivroEnum;
-import com.biblioteca.sistemadebiblioteca.domain.dto.CategoriaDTO;
 import com.biblioteca.sistemadebiblioteca.domain.dto.LivroDTO;
 import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.livroException.LivroExistsException;
-import com.biblioteca.sistemadebiblioteca.domain.interfaces.LivroServiceImpl;
-import com.biblioteca.sistemadebiblioteca.domain.model.Categoria;
+import com.biblioteca.sistemadebiblioteca.domain.service.serviceImpl.LivroServiceImpl;
 import com.biblioteca.sistemadebiblioteca.domain.model.Livro;
 import com.biblioteca.sistemadebiblioteca.repository.LivroRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class LivroService implements LivroServiceImpl {
@@ -49,6 +46,8 @@ public class LivroService implements LivroServiceImpl {
 
         if (livro.getStatus() != LivroEnum.EMPRESTADO) {
             livro.setStatus(LivroEnum.EMPRESTADO);
+        } else{
+            livro.setStatus(LivroEnum.DISPONIVEL);
         }
         return repository.save(livro);
     }
