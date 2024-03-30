@@ -18,8 +18,8 @@ public class DevolucaoController {
         this.devolucaoService = devolucaoService;
     }
 
-    @PostMapping("/devolucao/{id_livro}")
-    public ResponseEntity askDevolution(@PathVariable("id_livro") Integer id_livro){
-        return new ResponseEntity<>(devolucaoService.askDevolution(id_livro), HttpStatus.OK);
+    @PostMapping("/devolucao/{id_book}")
+    public ResponseEntity askDevolution(@PathVariable("id_book") Integer id_book){
+        return new ResponseEntity<>(devolucaoService.askDevolution(id_book), HttpStatus.OK);
     }
 }
