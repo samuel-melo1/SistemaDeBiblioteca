@@ -4,6 +4,7 @@ import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.livroException
 import com.biblioteca.sistemadebiblioteca.domain.Enums.LivroEnum;
 import com.biblioteca.sistemadebiblioteca.domain.model.Livro;
 import com.biblioteca.sistemadebiblioteca.repository.LivroRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -18,6 +19,7 @@ public class DevolucaoService {
         this.livroService = livroService;
         this.repository = repository;
     }
+    @Transactional
     public boolean askDevolution(Integer id_book){
         Livro book_id = (repository.findById(id_book)
                 .orElseThrow(LivroNotFoundException::new));

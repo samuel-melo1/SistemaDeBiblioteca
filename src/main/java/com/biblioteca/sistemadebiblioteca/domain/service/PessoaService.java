@@ -1,6 +1,6 @@
 package com.biblioteca.sistemadebiblioteca.domain.service;
 
-import com.biblioteca.sistemadebiblioteca.domain.interfaces.PessoaServiceImpl;
+import com.biblioteca.sistemadebiblioteca.domain.service.serviceImpl.PessoaServiceImpl;
 import com.biblioteca.sistemadebiblioteca.domain.model.Pessoa;
 import com.biblioteca.sistemadebiblioteca.domain.dto.PessoaDTO;
 import com.biblioteca.sistemadebiblioteca.repository.PessoaRepository;
@@ -11,7 +11,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PessoaService implements PessoaServiceImpl {
