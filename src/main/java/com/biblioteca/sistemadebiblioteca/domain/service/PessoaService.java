@@ -27,10 +27,14 @@ public class PessoaService implements PessoaServiceImpl {
         }
         String encryptedPassword = new BCryptPasswordEncoder().encode(pessoaDTO.senha());
 
-        Pessoa newUser = new Pessoa(pessoaDTO.nome(), pessoaDTO.cpf(), pessoaDTO.data_nascimento(), pessoaDTO.endereco(),
-                pessoaDTO.email(),
-                encryptedPassword,
-                pessoaDTO.role());
+        Pessoa newUser = Pessoa.builder()
+                .nome(pessoaDTO.nome())
+                .cpf(pessoaDTO.cpf())
+                .data_nascimento(pessoaDTO.data_nascimento())
+                .endereco(pessoaDTO.endereco())
+                .email(pessoaDTO.email())
+                .senha(encryptedPassword)
+                .role(pessoaDTO.role()).build();
 
         return pessoaRepository.save(newUser);
     }

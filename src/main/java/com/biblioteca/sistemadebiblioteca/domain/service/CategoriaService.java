@@ -25,9 +25,10 @@ public class CategoriaService {
             throw new CategoriaExistException();
         }
         return categoriaRepository.save(Categoria.builder()
-                                        .nome(categoriaDTO.nome())
-                                         .descricao(categoriaDTO.descricao()).build());
+                .nome(categoriaDTO.nome())
+                .descricao(categoriaDTO.descricao()).build());
     }
+
     public List<Categoria> getCategorias() {
         if (categoriaRepository.findAll().isEmpty()) {
             throw new CategoriaNotFoundException();

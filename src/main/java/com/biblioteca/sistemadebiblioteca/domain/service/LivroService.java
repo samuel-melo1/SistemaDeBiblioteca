@@ -24,7 +24,10 @@ public class LivroService implements LivroServiceImpl {
         if (repository.existsLivroByTitulo(livroDTO.titulo())) {
             throw new LivroExistsException();
         }
-        Livro newBook = new Livro(livroDTO.titulo(), livroDTO.categoria());
+        Livro newBook = Livro.builder()
+                .titulo(livroDTO.titulo())
+                .categoria(livroDTO.categoria()).build();
+
         return repository.save(newBook);
     }
     @Override
@@ -40,7 +43,7 @@ public class LivroService implements LivroServiceImpl {
         repository.deleteById(id_book);
         return true;
     }
-    public Livro updateStatusBook(int id) {
+    public <T> Livro updateStatusBook(Integer id) {
         Livro livro = repository.findById(id)
                 .orElseThrow(LivroNotFoundException::new);
 
