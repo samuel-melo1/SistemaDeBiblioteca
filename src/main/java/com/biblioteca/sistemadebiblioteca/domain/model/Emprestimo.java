@@ -2,16 +2,19 @@ package com.biblioteca.sistemadebiblioteca.domain.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Data
 @Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Emprestimo {
+public class Emprestimo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

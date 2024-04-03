@@ -1,4 +1,4 @@
-package com.biblioteca.sistemadebiblioteca.domain.interfaces;
+package com.biblioteca.sistemadebiblioteca.domain.service.serviceImpl;
 
 import com.biblioteca.sistemadebiblioteca.domain.dto.LivroDTO;
 import com.biblioteca.sistemadebiblioteca.domain.model.Livro;
