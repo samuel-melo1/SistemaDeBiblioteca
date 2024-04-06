@@ -20,6 +20,7 @@ public class LivroService implements LivroServiceImpl {
     }
 
     @Override
+    @Transactional
     public Livro createBook(LivroDTO livroDTO) throws LivroExistsException {
         if (repository.existsLivroByTitulo(livroDTO.titulo())) {
             throw new LivroExistsException();
@@ -43,7 +44,8 @@ public class LivroService implements LivroServiceImpl {
         repository.deleteById(id_book);
         return true;
     }
-    public <T> Livro updateStatusBook(Integer id) {
+    @Transactional
+    public Livro updateStatusBook(Integer id) {
         Livro livro = repository.findById(id)
                 .orElseThrow(LivroNotFoundException::new);
 

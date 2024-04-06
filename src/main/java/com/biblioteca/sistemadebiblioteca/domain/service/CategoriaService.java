@@ -5,6 +5,7 @@ import com.biblioteca.sistemadebiblioteca.domain.model.Categoria;
 import com.biblioteca.sistemadebiblioteca.domain.dto.CategoriaDTO;
 import com.biblioteca.sistemadebiblioteca.repository.CategoriaRepository;
 import com.biblioteca.sistemadebiblioteca.config.infra.exceptions.categoriaException.CategoriaNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -20,6 +21,7 @@ public class CategoriaService {
         this.categoriaRepository = categoriaRepository;
     }
 
+    @Transactional
     public Categoria create(CategoriaDTO categoriaDTO) {
         if (categoriaRepository.existsCategoriaByNome(categoriaDTO.nome())) {
             throw new CategoriaExistException();

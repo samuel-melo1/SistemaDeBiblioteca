@@ -28,7 +28,6 @@ public class EmprestimoService  {
         this.emprestimoProducer = emprestimoProducer;
         this.livroService = livroService;
     }
-
     @Transactional
     public Emprestimo emprestar(Emprestimo emprestimo) {
         Livro livro = livroRepository.findLivroByTitulo(emprestimo.getLivro().getTitulo());
